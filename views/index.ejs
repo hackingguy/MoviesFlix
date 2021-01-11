@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Flix</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="bg-image"></div>
+    <div class="wrapper">
+      <%- include("partials/nav-bar.ejs") %>
+      <section id="body-section">
+        <%- include("partials/sidebar.ejs") %>
+        <section id="movies">
+          <section id="movies-title-bar">
+            <div class="current-title">
+              <span class="current">All Movies</span>
+            </div>
+            <div class="click-menus">
+              <div class="genres">
+                <button class="title-button">All Genres</button>
+              </div>
+              <div class="rating">
+                <button class="title-button">All Ratings</button>
+              </div>
+              <div class="sortBy">
+                <button class="title-button">Sort By</button>
+              </div>
+            </div>
+          </section>
+          <section id="movies-list">
+            <% movies.forEach(movie=>{ %>
+            <div class="movie-container animate-bottom hide">
+              
+              <a href="/movie/?id=<%= movie["_id"] %>" class="movie-link">
+                <div class="poster">
+                  <img src="<%= movie.poster %>" alt="" class="poster-img" />
+                  <div class="poster-overlay">
+                    <div class="imdb-rating">
+                      <span class="imdb">IMDB RATING</span>
+                      <div class="stars">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                      </div>
+                    </div>
+                    <div class="poster-description"><span></span></div>
+                  </div>
+                </div>
+                <div class="movie-description">
+                  <div class="movie-name"><span><%= movie.title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0].split(" HD 720p")[0].split(" HD-720p")[0] %></span></div>
+                  <div class="imdb-rating"></div>
+                </div>
+              </a>
+            </div>
+            <%})%>
+          </section>
+          <div class="pagination"></div>
+        </section>
+      </section>
+      <%- include("partials/footer.ejs") %>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

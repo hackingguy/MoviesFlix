@@ -1,0 +1,39 @@
+<header>
+  <nav class="nav-bar">
+    <div class="burger">
+      <div class="ham-line"></div>
+      <div class="ham-line"></div>
+      <div class="ham-line"></div>
+    </div>
+    <div class="logo">
+      <a href="/"><h1>MoviesFlix</h1></a>
+    </div>
+    <form autocomplete="off" class="search" method="GET" action="/search/?query=+q">
+      <input
+        type="text"
+        name="q"
+        class="search-bar-input"
+        placeholder="Search Here"
+        onkeyup="search(this.value)"
+      />
+      <input type="submit" style="position: absolute; left: -9999px" />
+    </form>
+    <div class="search-icon"><div class="fa fa-search"></div></div>
+    <div class="href-links">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/favourites">Favourites</a>
+        </li>
+        <li>
+          <a href="https://api.maplehacks.com">API</a>
+        </li>
+        <li>
+          <a href="#">My Account</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

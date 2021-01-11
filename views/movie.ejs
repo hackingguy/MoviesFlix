@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0] %> | MovieFlix</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/movie.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
+  </head>
+  <body>
+    <div class="bg-image"></div>
+    <div class="wrapper">
+      <%- include("partials/nav-bar.ejs") %>
+      <main class="container">
+        <%- include("partials/sidebar.ejs") %>
+        <!-- Do Not Edit Below Block By Javascript, Let it Handle By Plyr else it will break -->
+        <section id="movie-container">
+          <div id="main-title"><%= title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0] %></div>
+          <div class="video-container hover-effect">
+            <video id="player" playsinline crossorigin controls data-poster="">
+              <source src="<%= sourceLink %>" type="video/mp4" />
+            </video>
+          </div>
+          <% if(Object.keys(episodes).length>1) { %>
+          <section id="episode-header">
+            <span>Episodes</span>
+            <div class="fa fa-plus" id="plus"></div>
+          </section>
+          <section id="ep-list">
+
+           <% Object.values(episodes).forEach((link,i) => { %>
+            
+            <a href="<%= link %>" class="episode-button">
+              <span class="ep">Ep </span><span class="ep-num"><%= i+1 %></span>
+            </a>
+            <% }) %> 
+          </section>
+
+          <% } %>
+          <section id="describe">
+            <span>Description</span>
+            <div class="fa fa-angle-down" id="arrow"></div>
+          </section>
+          <section id="details"></section>
+          <div class="players">
+            <div class="player" id="vlc">
+              <span>Play With VLC</span>
+              <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/vlc.png" alt="">
+            </div>
+            <div class="player" id="mx">
+              <span>Play With MX Player</span>
+              <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/mxplayer.png" alt="">
+            </div>
+          </div>
+        </section>
+        <section id="side-bar">
+          <div id="side-title">
+            <p>Related Movies</p>
+          </div>
+          <div class="related">
+            <div id="related-movies">
+              <% sideLinks.forEach((e,i)=>{ %>
+              <div class="related-movie-container animate-bottom">
+                <a href="<%= e.link %>" class="movie-link">
+                  <div class="related-poster">
+                    <img src="<%= e.poster %>" alt="" class="rel-poster" />
+                  </div>
+                  <div class="related-movie-description">
+                    <div class="movie-name">
+                      <span
+                        ><%= e.title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0] %></span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </section>
+      </main>
+      <%- include("partials/footer.ejs") %>
+    </div>
+    <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+    <script src="/js/movie.js"></script>
+  </body>
+</html>
