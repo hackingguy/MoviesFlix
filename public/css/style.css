@@ -488,6 +488,7 @@ header {
     height: 0px;
     overflow: hidden;
     transition: 0.2s all;
+    -webkit-transition: 0.2s all;
   }
 
   .href-links ul {
