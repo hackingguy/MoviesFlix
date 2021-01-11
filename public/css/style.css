@@ -573,4 +573,28 @@ header {
 }
 
 
+@media only screen and (max-width:460px) {
+  .movie-container {
+    width: 150px;
+    height: 225px;
+  }
+  .rating {
+    display: none;
+  }
 
+  .title-button {
+    padding: 8px;
+    border-radius: 5px;
+  }
+
+  .poster {
+    height: 100%;
+    width: 100%;
+  }
+
+  #footer-section {
+    margin-top: 15px;
+    border-radius: 0;
+    border-radius: 10px;
+  }
+}

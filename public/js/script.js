@@ -90,10 +90,12 @@ function sideCollapse(){
 }
 
 let start = ()=>{
-  // window.onscroll = ()=>{addSticky();}
-  //getData();
-  addDescription()
-  sideCollapse()
+  if(screen.width>768){
+    addDescription()
+  }
+  else{
+    sideCollapse()
+  }
 }
 
 start();

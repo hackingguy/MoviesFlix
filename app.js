@@ -4,11 +4,11 @@ var indexRoute = require("./routes/index");
 var movieRoute = require("./routes/movies");
 var searchRoute = require("./routes/search");
 var mongoose = require("mongoose");
-const { link } = require("fs");
 var app = express();
 mongoose.connect("mongodb+srv://hackingguy:akash710@cluster0.qvgbg.mongodb.net/movies?retryWrites=true&w=majority",{useNewUrlParser: true,useUnifiedTopology: true})
   .then(() => console.log("Connected To Database"))
   .catch((err) => console.log(err));
+
 
 //View engine setup
 app.set("views", path.join(__dirname, "views"));
