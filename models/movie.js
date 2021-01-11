@@ -28,7 +28,7 @@ class Movies {
   async getMovieDetails(id) {
     let movie = await this.model
       .findOne({ _id: id })
-      .select({ title: 1, source: 1 });
+      .select({ title: 1, source: 1 , movie_link:1});
     let sideLinks = await this.getMovies(6, 1);
     if(this.document=="movies") return { playing: movie, sideLinks: sideLinks };
 

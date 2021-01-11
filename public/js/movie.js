@@ -182,6 +182,7 @@ let initDOM = async () => {
   }
 };
 
+
 function start() {
   initDOM()
     .then(() => console.log("Everything Intialized Perfectly"))

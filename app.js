@@ -4,6 +4,7 @@ var indexRoute = require("./routes/index");
 var movieRoute = require("./routes/movies");
 var searchRoute = require("./routes/search");
 var mongoose = require("mongoose");
+const { link } = require("fs");
 var app = express();
 mongoose.connect("mongodb+srv://hackingguy:akash710@cluster0.qvgbg.mongodb.net/movies?retryWrites=true&w=majority",{useNewUrlParser: true,useUnifiedTopology: true})
   .then(() => console.log("Connected To Database"))
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //Routes
 app.use("/", indexRoute);
 app.use("/movie", movieRoute);
-app.use("/search",searchRoute)
+app.use("/search",searchRoute);
+
 
 module.exports = app;

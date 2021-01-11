@@ -26,7 +26,7 @@
           <div id="main-title"><%= title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0] %></div>
           <div class="video-container hover-effect">
             <video id="player" playsinline crossorigin controls data-poster="">
-              <source src="<%= sourceLink %>" type="video/mp4" />
+              <source src="<%= sourceLink %>" />
             </video>
           </div>
           <% if(Object.keys(episodes).length>1) { %>
