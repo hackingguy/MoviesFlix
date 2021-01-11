@@ -33,10 +33,12 @@ class Movies {
     if(this.document=="movies") return { playing: movie, sideLinks: sideLinks };
 
     //Structure The Object
-    if(movie["source"]["source"].length>0){
-      movie["source"] = {"1":"https://cors.maplehacks.ml/"+movie["source"]["source"][0]["file"]}
-      return { playing: movie, sideLinks: sideLinks };
-    }
+    if(movie["source"]["source"].length>0)
+      movie["source"] = {"1":"https://cors.maplehacks.ml/"+movie["source"]["source"][0]["file"]};
+    else
+      movie["source"] = undefined
+      
+    return { playing: movie, sideLinks: sideLinks };
   }
 
   async search(q) {
