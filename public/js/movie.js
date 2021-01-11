@@ -1,10 +1,10 @@
-const player = new Plyr("#player",{
-  "speed":{ selected: 1, options: [0.5, 1, 2] }
+const player = new Plyr("#player", {
+  speed: { selected: 1, options: [0.5, 1, 2] },
 });
 
 const apiKey = "c0691164";
 
-function collapsible(sec,content,a) {
+function collapsible(sec, content, a) {
   sec.addEventListener("click", () => {
     a.classList.toggle("fa-angle-down");
     a.classList.toggle("fa-angle-up");
@@ -13,16 +13,16 @@ function collapsible(sec,content,a) {
   });
 }
 
-function sideCollapse(){
+function sideCollapse() {
   var search = document.querySelector(".fa-search");
   var nav = document.querySelector(".sidebar");
   var burger = document.querySelector(".burger");
-  search.addEventListener('click',()=>{
-    document.querySelector('.search').classList.toggle("form-active");
-  })
-  burger.addEventListener('click',()=>{
-    nav.classList.toggle("sidebar-active")
-  })
+  search.addEventListener("click", () => {
+    document.querySelector(".search").classList.toggle("form-active");
+  });
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("sidebar-active");
+  });
 }
 
 function sideCard(link, time, title) {
@@ -52,7 +52,8 @@ async function fetchData(id) {
     let omdb = await fetch(
       "https://www.omdbapi.com/?s=" +
         encodeURIComponent(sanitize(title)) +
-        "&apikey="+apiKey
+        "&apikey=" +
+        apiKey
     );
     let search = await omdb.json();
     let description = "No description available";
@@ -60,7 +61,8 @@ async function fetchData(id) {
       let data = await fetch(
         "https://www.omdbapi.com/?i=" +
           search["Search"][0]["imdbID"] +
-          "&apikey="+apiKey
+          "&apikey=" +
+          apiKey
       );
       let d = await data.json();
       description = d["Plot"];
@@ -97,16 +99,21 @@ async function getLatest() {
 }
 
 function movieCard(movieLink, poster, description, title) {
-  if(!description) description = "No Description Available";
+  if (!description) description = "No Description Available";
   return `<div class="related-movie-container animate-bottom"> <a href="${movieLink}" class="movie-link"> <div class="related-poster"> <img src="${poster}" alt="" class="rel-poster" /> <div class="related-movie-description"> <div class="movie-name"> <span>${title}</span> </div> <div class="imdb-rating"> </div> </div> </a></div>`;
 }
 
-function fillSidebar(sideBar,data){
-  for(var i=0;i<data.length;i++){
+function fillSidebar(sideBar, data) {
+  for (var i = 0; i < data.length; i++) {
     let title = sanitize(data[i]["title"]);
     let id = data[i]["_id"];
     let poster = data[i]["poster"];
-    sideBar.innerHTML+=movieCard("/movie/movie.html?id=" + id, poster, undefined, title);
+    sideBar.innerHTML += movieCard(
+      "/movie/movie.html?id=" + id,
+      poster,
+      undefined,
+      title
+    );
   }
 }
 
@@ -171,10 +178,10 @@ let initDOM = async () => {
       let src = await getGoogleLink(data[1][1]);
       player.source = src;
     }
-    let sideBarData= await getLatest();
-    fillSidebar(sideBar,sideBarData);
-    content=document.getElementById("details");
-    collapsible(describe,content,arrow);
+    let sideBarData = await getLatest();
+    fillSidebar(sideBar, sideBarData);
+    content = document.getElementById("details");
+    collapsible(describe, content, arrow);
     return true;
   } catch (err) {
     console.log(err);
@@ -182,11 +189,31 @@ let initDOM = async () => {
   }
 };
 
+function hlsStream() {
+  let video = document.querySelector("video");
+  let link = document.querySelector("source").src;
+  if (link.indexOf(".m3u8") > -1) {
+    video.innerHTML="";
+    if (!Hls.isSupported()) {
+      console("Supported")
+      video.source = { type: "video", sources: [{ src: link }] };
+    } else {
+      console.log("NSupported")
+      const hls = new Hls();
+      hls.loadSource(link);
+      hls.attachMedia(video);
+      window.hls = hls;
+    }
+    window.player = player;
+  }
+}
+
+
+hlsStream();
 
 function start() {
   initDOM()
     .then(() => console.log("Everything Intialized Perfectly"))
     .catch((e) => console.log(e));
 }
-
-sideCollapse()
+sideCollapse();
