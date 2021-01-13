@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 
 const moviesSchema = new schema({
   movie_link: String,
+  movie_source:String,
   title: String,
   poster: String,
   description: String,
@@ -28,16 +29,8 @@ class Movies {
   async getMovieDetails(id) {
     let movie = await this.model
       .findOne({ _id: id })
-      .select({ title: 1, source: 1 , movie_link:1});
-    let sideLinks = await this.getMovies(6, 1);
-    if(this.document=="movies") return { playing: movie, sideLinks: sideLinks };
-
-    //Structure The Object
-    if(movie["source"]["source"].length>0)
-      movie["source"] = {"1":"https://cors.maplehacks.ml/"+movie["source"]["source"][0]["file"]};
-    else
-      movie["source"] = undefined
-      
+      .select({ title: 1, source: 1 , source_bk: 1, movie_source:1});
+    let sideLinks = await this.getMovies(6, 1);      
     return { playing: movie, sideLinks: sideLinks };
   }
 
@@ -51,5 +44,5 @@ class Movies {
 
 module.exports.dubbed = new Movies("movies");
 module.exports.hollywood = new Movies("vidnexts");
-module.exports.cinema = new Movies("cinemas");
+module.exports.cinema = new Movies("cinema-movies");
 module.exports.series = new Movies("vidnexts-tv-series");

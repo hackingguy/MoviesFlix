@@ -9,17 +9,23 @@ exports.playController= async(req,res)=>{
         res.send("Sorry This Movie Isn't Available at this Time!!!!!");
         return;
     }
-    let link = play["source"]["1"];
+    let link = play["source"]["0"];
     try{
         await axios.head(link);
     }
     catch{
-        let d = await getDirectLink(play["movie_link"]);
-        play["source"] = d["source"];
+        try{
+            await axios.head(play["source_bk"]["0"])
+            link = play["source_bk"]["0"]
+        }
+        catch{
+            let d = await getDirectLink(play["movie_source"]);
+            link = d["source"]["0"];
+        }
     }
     res.render("movie",{
         title: play["title"],
-        sourceLink: play["source"]["1"],
+        sourceLink: link,
         episodes:play["source"],
         sideLinks:details["sideLinks"],
     })
