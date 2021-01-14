@@ -1,6 +1,7 @@
 const axios = require('axios');
+const {cinema} = require('../models/movie')
 
-module.exports.getDirectLink = async(link)=>{
+module.exports.getDirectLink = async(id,link)=>{
     if(link.indexOf("https://vidnext.net")!=-1){
        response = await axios.get(link,{
             headers:{
@@ -9,7 +10,8 @@ module.exports.getDirectLink = async(link)=>{
         });
         let movie = response.data;
         if(movie["source"].length>0){
-            movie["source"] = {"0":"https://cors.maplehacks.ml/"+movie["source"][0]["file"]}
+            cinema.updateMovie(id,link);
+            movie["source"] = {"0":movie["source"][0]["file"]}
             return movie;
         }
     }

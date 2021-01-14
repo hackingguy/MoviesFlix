@@ -2,7 +2,13 @@ const player = new Plyr("#player", {
   speed: { selected: 1, options: [0.5, 1, 2] },
 });
 
-const apiKey = "c0691164";
+player.on("seeking", function (event) {
+  document.querySelector(".loader-video").show();
+});
+
+player.on("seeked", function (event) {
+  document.querySelector(".loader-video").hide();
+});
 
 function collapsible(sec, content, a) {
   sec.addEventListener("click", () => {
@@ -23,54 +29,6 @@ function sideCollapse() {
   burger.addEventListener("click", () => {
     nav.classList.toggle("sidebar-active");
   });
-}
-
-function sideCard(link, time, title) {
-  return `<div class="related-movie-container"> <div class="related-poster hover-effect"> <img class="rel-poster" src="${link}" alt="" /> </div> <div class="related-movie-description"> <div class="related-wrapper"> <div class="related-title"> <span>${title}</span> </div> <div class="related-description"> <div class="length"> <span>${time}</span> </div> <div class="imdb-rating"> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> </div> </div> </div> </div> </div>`;
-}
-
-function sanitize(title) {
-  console.log(title);
-  return title
-    .split(" (")[0]
-    .split("[18+] ")
-    .slice(-1)[0]
-    .split(" {")[0]
-    .split(" [")[0]
-    .split("Download ")
-    .slice(-1)[0]
-    .split("NetFlix ")
-    .slice(-1)[0];
-}
-
-async function fetchData(id) {
-  try {
-    let response = await fetch("https://api.maplehacks.ml/data/api/id/" + id);
-    let res = await response.json();
-    let title = res[0]["title"];
-    let source = res[0]["source"];
-    let omdb = await fetch(
-      "https://www.omdbapi.com/?s=" +
-        encodeURIComponent(sanitize(title)) +
-        "&apikey=" +
-        apiKey
-    );
-    let search = await omdb.json();
-    let description = "No description available";
-    if (search["Response"] == "True") {
-      let data = await fetch(
-        "https://www.omdbapi.com/?i=" +
-          search["Search"][0]["imdbID"] +
-          "&apikey=" +
-          apiKey
-      );
-      let d = await data.json();
-      description = d["Plot"];
-    }
-    return [title, source, description];
-  } catch (err) {
-    console.log(err);
-  }
 }
 
 function switchToPlayer(episode, link) {
@@ -193,12 +151,12 @@ function hlsStream() {
   let video = document.querySelector("video");
   let link = document.querySelector("source").src;
   if (link.indexOf(".m3u8") > -1) {
-    video.innerHTML="";
+    video.innerHTML = "";
     if (!Hls.isSupported()) {
-      console("Supported")
+      console("Supported");
       video.source = { type: "video", sources: [{ src: link }] };
     } else {
-      console.log("NSupported")
+      console.log("NSupported");
       const hls = new Hls();
       hls.loadSource(link);
       hls.attachMedia(video);
@@ -207,7 +165,6 @@ function hlsStream() {
     window.player = player;
   }
 }
-
 
 hlsStream();
 

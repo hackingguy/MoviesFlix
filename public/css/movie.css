@@ -578,6 +578,7 @@ body {
 
     .video-container {
         border-radius: 0px;
+        width: 100%;
     }
 
     #main-title {

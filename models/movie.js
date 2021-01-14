@@ -16,22 +16,28 @@ class Movies {
     this.model = mongoose.model(document, moviesSchema);
   }
 
+  async updateMovie(id,link){
+    var result = await this.model.updateOne({_id:id},{$set: {source:{"0":link}}});
+    return result;
+  }
+
+
   async getMovies(size, pageNum) {
     let movies = await this.model
       .find()
+      .sort({ _id: -1 })
       .skip((pageNum - 1) * size)
       .limit(size)
-      .sort({ _id: -1 })
-      .select({ poster: 1, title: 1 });
+      .select({ poster: 1, title: 1, description:1 });
     return movies;
   }
 
   async getMovieDetails(id) {
     let movie = await this.model
       .findOne({ _id: id })
-      .select({ title: 1, source: 1 , source_bk: 1, movie_source:1});
+      .select({ title: 1, source: 1 , source_bk: 1, movie_source:1,description:1});
     let sideLinks = await this.getMovies(6, 1);      
-    return { playing: movie, sideLinks: sideLinks };
+    return { playing: movie, sideLinks: sideLinks, id:id };
   }
 
   async search(q) {
@@ -42,7 +48,4 @@ class Movies {
   }
 }
 
-module.exports.dubbed = new Movies("movies");
-module.exports.hollywood = new Movies("vidnexts");
-module.exports.cinema = new Movies("cinema-movies");
-module.exports.series = new Movies("vidnexts-tv-series");
+module.exports.cinema = new Movies("movies");

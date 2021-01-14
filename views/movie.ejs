@@ -23,7 +23,7 @@
         <%- include("partials/sidebar.ejs") %>
         <!-- Do Not Edit Below Block By Javascript, Let it Handle By Plyr else it will break -->
         <section id="movie-container">
-          <div id="main-title"><%= title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0].split(" HD 720p")[0].split(" HD-720p")[0] %></div>
+          <div id="main-title"><%= sanitizer(title) %></div>
           <div class="video-container hover-effect">
             <video id="player" playsinline crossorigin controls data-poster="">
               <source src="<%= sourceLink %>" />
@@ -76,7 +76,7 @@
                   <div class="related-movie-description">
                     <div class="movie-name">
                       <span
-                        ><%= e.title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0].split(" HD 720p")[0].split(" HD-720p")[0] %></span
+                        ><%= sanitizer(e.title) %></span
                       >
                     </div>
                   </div>

@@ -369,8 +369,18 @@ header {
 }
 
 .poster-description {
-  text-overflow: ellipsis;
+  max-height: 50%;
+  overflow-y: hidden;
+  position: relative;
 }
+
+.poster-description:after {
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 
 .checked {
   color: gold;
@@ -385,20 +395,22 @@ header {
 }
 
 .pagination {
-  display: none;
-  /*display : inline-block;*/
+  /* display: none; */
+  display: inline-block;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   font-weight: bold;
   font-size: 20px;
   border-radius: 10px;
+  max-width: 100%;
   width: 100%;
   margin: 10px 0px;
 }
 
 .page-num {
-  border: 1px solid rgba(255, 255, 255, 0.514);
-  padding: 20px;
+  padding: 5px;
+  margin: 1px;
+  border-radius: 1px;
 }
 
 .page-num:hover,
@@ -508,7 +520,7 @@ header {
     cursor: pointer;
   }
 
-  .search-icon{
+  .search-icon {
     display: contents;
   }
 
@@ -526,26 +538,28 @@ header {
   }
 
   .search {
-    height:0px;
+    height: 0px;
     overflow: hidden;
     position: absolute;
-    background:white;
+    background: white;
     border-radius: 5px;
-    border:none;
+    border: none;
     transition: 0.2s all;
   }
 
   .search-bar-input {
-    color:black;
+    color: black;
   }
 
   .form-active {
-    height:40px;
-    padding:10px;
+    height: 40px;
+    padding: 10px;
   }
+
   ::placeholder {
-    color:black;
+    color: black;
   }
+
   .fa {
     font-size: 1.5em;
   }
@@ -579,6 +593,7 @@ header {
     width: 150px;
     height: 225px;
   }
+
   .rating {
     display: none;
   }
