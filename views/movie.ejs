@@ -25,7 +25,7 @@
         <section id="movie-container">
           <div id="main-title"><%= sanitizer(title) %></div>
           <div class="video-container hover-effect">
-            <video id="player" playsinline crossorigin controls data-poster="">
+            <video preload="metadata" id="player" playsinline crossorigin controls data-poster="">
               <source src="<%= sourceLink %>" />
             </video>
           </div>
