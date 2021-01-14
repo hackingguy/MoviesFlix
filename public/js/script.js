@@ -1,6 +1,7 @@
 function pagination(n) {
   var addPages = document.querySelector("div.pagination");
-  var start = window.location.search.split("page=")[1].split("#")[0];
+  try{ var start = window.location.search.split("page=")[1].split("#")[0];}
+  catch{ }
   if(!start) start=1;
   for (let i = start>1?start-1:start; i <=parseInt(start)+parseInt(n); i++) {
     let a = document.createElement("a");
