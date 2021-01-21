@@ -10,7 +10,8 @@ module.exports.getDirectLink = async(id,link)=>{
         });
         let movie = response.data;
         if(movie["source"].length>0){
-            cinema.updateMovie(id,link);
+            console.log(id,movie['source']['0']['file'])
+            cinema.updateMovie(id,movie['source']['0']['file']);
             movie["source"] = {"0":movie["source"][0]["file"]}
             return movie;
         }

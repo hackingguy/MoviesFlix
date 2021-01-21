@@ -12,16 +12,17 @@ exports.playController= async(req,res)=>{
         res.send("Sorry This Movie Isn't Available at this Time!!!!!");
         return;
     }
-    let link = process.env.CORS_URL + play["source"]["0"];
+    let link = play["source"]["0"];
     try{
         await axios.head(link);
+        link = process.env.CORS_URL + play["source"]["0"]
     }
-    catch{
+    catch(err){
         try{
             await axios.head(play["source_bk"]["0"])
             link = process.env.CORS_URL + play["source_bk"]["0"]
         }
-        catch{
+        catch(err){
             let d = await getDirectLink(id,play["movie_source"]);
             link = process.env.CORS_URL +  d["source"]["0"];
         }
