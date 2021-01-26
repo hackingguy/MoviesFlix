@@ -1,7 +1,7 @@
 FROM node:14
 
 #Create Work Directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 
 #Copy package.json And package-lock.json
@@ -9,8 +9,7 @@ COPY package*.json ./
 
 RUN npm install
 
-#Copy Source Code Inside Docker
-COPY . .
+ENV PORT=3000
 
 EXPOSE 3000
 
