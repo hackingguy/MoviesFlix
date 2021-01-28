@@ -4,5 +4,8 @@ var router = express.Router();
 
 
 router.get("/",getMovies);
+router.get('/',(req,res)=>{
+
+})
 
 module.exports = router;
