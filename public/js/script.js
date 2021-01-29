@@ -27,12 +27,13 @@ function sideCollapse(){
 }
 
 let start = ()=>{
+  let host = window.location.href;
+  if(host.includes("search"))
+    document.querySelector(".hero").style.display="none"
+  else
+    pagination(8);
   if(screen.width<=768){
     sideCollapse();
-    pagination(8);
-  }
-  else{
-    pagination(8);
   }
 }
 

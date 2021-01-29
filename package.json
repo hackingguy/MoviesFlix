@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "pm2 start ./bin/www --watch",
-    "startdev": "node ./bin/www"
+    "test": "node ./bin/www"
   },
   "dependencies": {
     "axios": "^0.21.1",

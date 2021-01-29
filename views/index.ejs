@@ -6,6 +6,7 @@
     <title>Movies Flix</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="/css/nav.css"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
       rel="stylesheet"
@@ -21,15 +22,17 @@
       <%- include("partials/nav-bar.ejs") %>
       <section id="body-section">
         <div class="hero">
-        <div class="hero-section">
-          <% top10.forEach(top=>{ %>
-          <a href="<%= top.link %>" class="hero-poster">
-            <div class="hero-poverlay"></div>
-            <img src="<%= top.poster %>" alt="" />
-          </a>
-          <%})%>
+          <div class="hero-section">
+            <%if (top10) {%>
+            <% top10.forEach(top=>{ %>
+            <a href="<%= top.link %>" class="hero-poster">
+              <div class="hero-poverlay"></div>
+              <img src="<%= top.poster %>" alt="" />
+            </a>
+            <%})%>
+            <%}%>
+          </div>
         </div>
-      </div>
         <%- include("partials/sidebar.ejs") %>
         <section id="movies">
           <section id="movies-title-bar">
@@ -53,7 +56,12 @@
             <div class="movie-container animate-bottom hide">
               <a href='/movie/?id=<%= movie["_id"] %>' class="movie-link">
                 <div class="poster">
-                  <img loading=lazy src="<%= movie.poster %>" alt="" class="poster-img" />
+                  <img
+                    loading="lazy"
+                    src="<%= movie.poster %>"
+                    alt=""
+                    class="poster-img"
+                  />
                   <div class="poster-overlay">
                     <div class="imdb-rating">
                       <span class="imdb">IMDB RATING</span>
@@ -80,7 +88,9 @@
             </div>
             <%})%>
           </section>
+          <% if (!search) { %>
           <div class="pagination"></div>
+          <%}%>
         </section>
       </section>
       <%- include("partials/footer.ejs") %>

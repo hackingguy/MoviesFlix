@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title.split("[18+] ").slice(-1)[0].split(" (")[0].split(" {")[0].split(" [")[0].split("Download ").slice(-1)[0].split("NetFlix ").slice(-1)[0].split(" HD 720p")[0].split(" HD-720p")[0] %> | MovieFlix</title>
+    <title><%= sanitizer(title) %> | MovieFlix</title>
+    <link rel="stylesheet" href="/css/nav.css"/>
+    <link rel="stylesheet" href="/css/sidebar.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
       rel="stylesheet"

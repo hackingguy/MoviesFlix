@@ -4,7 +4,9 @@ exports.searchController = (req,res)=>{
     cinema.search(req.query.q).then(data=>{
         res.render('index',{
             movies:data,
-            sanitizer:sanitizer
+            sanitizer:sanitizer,
+            search:true,
+            top10:false
         })
     })
 }

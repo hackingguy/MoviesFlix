@@ -1,0 +1,149 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 1;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.burger {
+    display: none;
+}
+
+.search-icon {
+    display: none;
+}
+
+.logo {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    max-width: 150px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.search {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    text-align: center;
+}
+
+.search-bar-input {
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+    font-size: 18px;
+    outline: none;
+    padding-bottom: 1px;
+}
+
+::placeholder {
+    color: white;
+}
+
+.search-bar-input:focus {
+    border-bottom: 1px solid rgb(255, 255, 255, 1);
+}
+
+.href-links ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+.href-links ul li {
+    margin-left: 20px;
+}
+
+.href-links ul li a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width:786px) {
+    .nav-bar {
+      height: unset;
+      margin-top: 10px;
+      flex-direction: column;
+      border: 0;
+      align-items: center;
+      padding: 20px
+    }
+  
+    .href-links {
+      display: none
+    }
+  
+  
+    .href-links ul {
+      position: relative;
+      display: flex;
+      flex-direction: column
+    }
+  
+    .burger {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      left: 40px;
+      cursor: pointer
+    }
+  
+    .search-icon {
+        top: 40px;
+        right: 0;
+        display: block;
+        position: absolute;
+    }
+  
+    .ham-line {
+      height: 3px;
+      margin: 2px;
+      background: #fff;
+      border-radius: 20px;
+      width: 25px
+    }
+  
+    .search {
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      background: #fff;
+      border-radius: 5px;
+      border: none;
+      transition: .2s all
+    }
+  
+    .search-bar-input {
+      color: #000
+    }
+  
+    ::placeholder {
+      color: #000
+    }
+  
+    .fa {
+      font-size: 1.5em
+    }
+  
+    .fa-search {
+      position: absolute;
+      display: unset;
+      color: #fff;
+      right: 40px;
+      cursor: pointer
+    }
+
+}

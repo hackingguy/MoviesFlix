@@ -13,6 +13,7 @@ exports.getMovies = async(req, res) => {
     res.render("index",{
         top10:top10,
         movies:movies,
-        sanitizer:sanitizer
+        sanitizer:sanitizer,
+        search:false
     });
 }
