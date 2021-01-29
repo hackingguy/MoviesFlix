@@ -21,7 +21,6 @@ class Movies {
     return result;
   }
 
-
   async getMovies(size, pageNum) {
     let movies = await this.model
       .find()

@@ -193,6 +193,57 @@ header {
   padding-top: 60px;
 }
 
+/* Hero Section Start*/
+.hero {
+  overflow: auto;
+  position: relative;
+  white-space: nowrap;
+  height: 340px;
+  width: 100%;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hero-section {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+/*Chromium*/
+.hero::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-poster {
+  position:relative;
+  height: 300px;
+  width:400px;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: 0.4s ease;
+  cursor: pointer;
+  object-fit: cover;
+  margin: 15px;
+}
+
+.hero-poster:hover {
+  transform: scale(1.1);
+}
+
+.hero-poverlay {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-poster img {
+  height: 100%;
+  width: 100%;
+}
+
 #body-section {
   display: flex;
   grid-area: mv-cntr;
@@ -283,7 +334,9 @@ header {
   /* border: 2px solid black; */
   max-height: 80px;
   width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.479);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-left: 0px;
+  border-right: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -501,7 +554,10 @@ header {
 
   .sidebar {
     display: flex;
+    background: black;
+    width: 100%;
     height: 0px;
+    position: absolute;
     overflow: hidden;
     transition: 0.2s all;
     -webkit-transition: 0.2s all;
@@ -529,7 +585,8 @@ header {
   }
 
   .sidebar-active {
-    height: 200px;
+    height: 255px;
+    border:0px;
   }
 
   .ham-line {
@@ -617,4 +674,8 @@ header {
     border-radius: 0;
     border-radius: 10px;
   }
+}
+
+@media only screen and (max-width:420px) {
+  
 }

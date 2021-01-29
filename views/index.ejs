@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Flix</title>
+    <title>Movies Flix</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -20,6 +20,16 @@
     <div class="wrapper">
       <%- include("partials/nav-bar.ejs") %>
       <section id="body-section">
+        <div class="hero">
+        <div class="hero-section">
+          <% top10.forEach(top=>{ %>
+          <a href="<%= top.link %>" class="hero-poster">
+            <div class="hero-poverlay"></div>
+            <img src="<%= top.poster %>" alt="" />
+          </a>
+          <%})%>
+        </div>
+      </div>
         <%- include("partials/sidebar.ejs") %>
         <section id="movies">
           <section id="movies-title-bar">
@@ -41,8 +51,7 @@
           <section id="movies-list">
             <% movies.forEach(movie=>{ %>
             <div class="movie-container animate-bottom hide">
-              
-              <a href="/movie/?id=<%= movie["_id"] %>" class="movie-link">
+              <a href='/movie/?id=<%= movie["_id"] %>' class="movie-link">
                 <div class="poster">
                   <img src="<%= movie.poster %>" alt="" class="poster-img" />
                   <div class="poster-overlay">
@@ -56,11 +65,15 @@
                         <span class="fa fa-star"></span>
                       </div>
                     </div>
-                    <div class="poster-description"><span><%= movie.description %></span></div>
+                    <div class="poster-description">
+                      <span><%= movie.description %></span>
+                    </div>
                   </div>
                 </div>
                 <div class="movie-description">
-                  <div class="movie-name"><span><%= sanitizer(movie.title) %></span></div>
+                  <div class="movie-name">
+                    <span><%= sanitizer(movie.title) %></span>
+                  </div>
                   <div class="imdb-rating"></div>
                 </div>
               </a>

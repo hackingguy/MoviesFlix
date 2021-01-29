@@ -1,27 +1,23 @@
-exports.apiController = (req,res)=>{
-    var token = req.params.accessToken;
-    if(!req.params.accessToken){
-        res.send({"response":false,"error":"Token Needed"});
-        return;
-    }
+const cinema = require("../models/movie")
 
-    //Check Token Authentication
-    var authorized = isAuthorized(token);
+module.exports.latest = async(req,res)=>{
+    let num = parseInt(req.params.num);
+    let skip = parseInt(req.params.skip);
+    if(num>10) num=10;
+    let data = await cinema.getMovies(num,skip)
+    res.send(data);
+}
 
-    if(authorized)
-    {
-        let data;
-        //Routes
-        //search on the basis of title
-        //get top x results
-        //get next x from the given token
-        //get top x by genre and with skip attribute
-        
-        
-        res.json({"response":true,"data":data});
-    }
-    else
-    {
-        res.json({"response":false,"error":"Token Not Valid"});
-    }
+module.exports.movie = async(req,res)=>{
+    let id = req.query.id;
+    if(!id) res.send({"Error":"title param required"});
+    let data = await cinema.getMovieDetails(id);
+    res.send(data);
+}
+
+module.exports.search = async(req,res)=>{
+    let title=req.query.title;
+    if(!title) res.send({"Error":"title param required"});
+    let data = await cinema.search(title);
+    res.send(data);
 }

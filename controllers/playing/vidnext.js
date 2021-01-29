@@ -14,11 +14,17 @@ exports.playController= async(req,res)=>{
     }
     let link = play["source"]["0"];
     try{
+        if(link.includes("vidnext.net/ajax.php")){
+            throw new Error("err");
+        }
         await axios.head(link);
         link = process.env.CORS_URL + play["source"]["0"]
     }
     catch(err){
         try{
+            if(link.includes("vidnext.net/ajax.php")){
+                throw new Error("err");
+            }
             await axios.head(play["source_bk"]["0"])
             link = process.env.CORS_URL + play["source_bk"]["0"]
         }
