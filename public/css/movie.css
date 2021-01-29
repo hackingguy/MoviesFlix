@@ -318,101 +318,9 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-    .nav-bar {
-        height: unset;
-        margin-top: 10px;
-        flex-direction: column;
-        border: 0;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .href-links {
-        display: none;
-    }
-
-    .sidebar {
-        display: flex;
-        height: 0px;
-        overflow: hidden;
-        transition: 0.2s all;
-    }
-
+    
     #movie-container {
         border-top: 1px solid white;
-    }
-
-    .href-links ul {
-        /* display: none; */
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /*Burger*/
-    .burger {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        left: 40px;
-        cursor: pointer;
-    }
-
-    .search-icon {
-        display: contents;
-    }
-
-    .sidebar-active {
-        height: 200px;
-    }
-
-    .ham-line {
-        height: 3px;
-        margin: 2px;
-        background: white;
-        border-radius: 20px;
-        /* cursor: pointer; */
-        width: 25px;
-    }
-
-    .search {
-        height: 0px;
-        overflow: hidden;
-        position: absolute;
-        background: white;
-        border-radius: 5px;
-        border: none;
-        transition: 0.2s all;
-    }
-
-    .search-bar-input {
-        color: black;
-    }
-
-    .form-active {
-        height: 40px;
-        padding: 10px;
-    }
-
-    ::placeholder {
-        color: black;
-    }
-
-    .fa {
-        font-size: 1.5em;
-    }
-
-    .fa-search {
-        position: absolute;
-        display: unset;
-        color: white;
-        right: 40px;
-        cursor: pointer;
-    }
-
-    .sidebar-links {
-        margin-top: 0;
     }
 
     #body-section {
@@ -439,10 +347,6 @@ body {
         font-weight: bolder;
         font-size: 20px;
         max-width: 90%;
-    }
-
-    #side-bar {
-        margin-top:10px;
     }
 
     .players{
