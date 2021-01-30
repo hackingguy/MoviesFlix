@@ -1,13 +1,15 @@
 require('dotenv').config();
-var express = require("express");
-var path = require("path");
-var helmet = require('helmet');
-var connectDB = require("./config/db");
-var indexRoute = require("./routes/index");
-var movieRoute = require("./routes/movies");
-var searchRoute = require("./routes/search");
-var apiRoute = require("./routes/api")
-var app = express();
+const path = require("path");
+const helmet = require('helmet');
+const express = require("express");
+const compression = require('compression');
+const app = express();
+
+const connectDB = require("./config/db");
+const indexRoute = require("./routes/index");
+const movieRoute = require("./routes/movies");
+const searchRoute = require("./routes/search");
+const apiRoute = require("./routes/api");
 
 //Connecting To Database
 connectDB();
@@ -17,6 +19,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 //Encoding
+app.use(compression());
 app.use(helmet({
     contentSecurityPolicy: false,
 }));
@@ -32,8 +35,6 @@ app.use("/search",searchRoute);
 
 //API Routes
 app.use("/api",apiRoute);
-
-
 
 app.use((req,res)=>{
     res.status(404).render('404')
