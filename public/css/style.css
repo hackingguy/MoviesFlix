@@ -314,7 +314,9 @@ header {
 }
 
 @media only screen and (max-width:786px) {
-
+  .movie-container {
+    width: 100%;
+  }
 
 }
 
