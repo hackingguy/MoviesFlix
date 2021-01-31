@@ -46,7 +46,7 @@ body {
 
 .wrapper {
   display: grid;
-  grid-template-areas: 'hdr hdr''mv-cntr mv-cntr''ftr ftr';
+  grid-template-areas: 'hdr''mv-cntr''ftr';
   backdrop-filter: blur(15px)
 }
 
@@ -117,28 +117,21 @@ header {
 }
 
 #body-section {
-  display: flex;
+  display: grid;
+  position: relative;
+  grid-template-areas:
+    "hero"
+    "movies" "pagination";
   grid-area: mv-cntr;
   min-height: 100vh;
-  flex-wrap: wrap
-}
-
-#movies {
-  display: flex;
-  flex: 65%;
-  flex-direction: row;
-  flex-wrap: wrap
-}
-
-#movies-container {
-  flex: 65%
 }
 
 #movies-list {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-evenly
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  justify-content: center;
+  grid-gap:1rem;
+  padding:1rem;
 }
 
 #movies-title-bar {
@@ -182,16 +175,15 @@ header {
 
 .movie-container {
   position: relative;
-  max-width: 200px;
+  max-width: 100%;
+  height:auto;
   text-align: center;
-  margin: 20px 6px;
-  transition: .5s all ease
+  transition: .5s all ease;
 }
 
 .poster {
   margin: auto;
-  width: 200px;
-  height: 300px;
+  max-width: 100%;
   transition: .4s;
   position: relative;
   background-image: linear-gradient(45deg, rgba(52, 52, 52, 1), rgb(16, 16, 17, 1))
@@ -199,13 +191,15 @@ header {
 
 .poster-img {
   width: 100%;
-  height: 100%;
+  display: block;
   border-radius: 5px
 }
 
 .poster:hover {
   z-index: 10;
-  transform: scale(1.1)
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, .192);
+  -webkit-box-shadow: 0 8px 16px 0 rgba(255, 255, 255, .192);
 }
 
 .poster-overlay {
@@ -227,10 +221,6 @@ header {
 
 .poster:hover .poster-overlay {
   opacity: 1
-}
-
-.poster:hover {
-  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, .192)
 }
 
 .poster-description {
@@ -261,14 +251,13 @@ header {
 .pagination {
   display: inline-block;
   text-align: center;
-  font-weight: 700;
-  position: relative;
-  top:15px;
+  font-weight: bolder;
   font-size: 20px;
   border-radius: 10px;
-  max-width: 100%;
-  width: 100%;
-  margin: 10px 0
+  padding:10px;
+}
+.page-num {
+  padding: 0 10px;
 }
 
 #footer-section {
@@ -325,21 +314,11 @@ header {
 }
 
 @media only screen and (max-width:786px) {
-  #body-section {
-    flex-direction: column
-  }
 
-  .movie-container {
-    margin: 0;
-    margin: 15px 15px
-  }
+
 }
 
 @media only screen and (max-width:460px) {
-  .movie-container {
-    width: 150px;
-    height: 225px
-  }
 
   .rating {
     display: none
@@ -351,22 +330,18 @@ header {
   }
 
   .poster {
-    height: 100%;
     width: 100%
   }
+
 
   #footer-section {
     margin-top: 15px;
     border-radius: 0;
     border-radius: 10px
   }
+}
 
-  .page-num {
-    padding:10px;
-  }
-
-  .page-active {
-    background-color: #fff;
-    color:black;
-  }
+.page-active {
+  background-color: #fff;
+  color: black;
 }

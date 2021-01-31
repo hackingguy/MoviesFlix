@@ -6,7 +6,7 @@ const sanitizer = require('../utils/sanitize')
 exports.getMovies = async(req, res) => {
     var pg = req.query.page;
     if(!pg) pg=1;
-    let movies = await cinema.getMovies(14,pg);
+    let movies = await cinema.getMovies(16,pg);
     let readFile = util.promisify(fs.readFile);
     let top10 = await readFile("./public/data.json")
     top10 = JSON.parse(top10)

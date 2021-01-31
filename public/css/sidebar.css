@@ -4,7 +4,6 @@
     justify-content: space-evenly;
     align-items: center;
     flex: auto;
-    border-right: 2px solid rgba(255, 255, 255, 0.527);
 }
 
 .side-link-container {
@@ -71,4 +70,11 @@
     .sidebar-links {
         margin-top: 0
     }
+}
+
+.sidebar-active {
+    /* height: 63px; */
+    height: 11%;
+    z-index: 1;
+    top: 0;
 }

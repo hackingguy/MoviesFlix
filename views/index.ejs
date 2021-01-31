@@ -34,8 +34,9 @@
             <%}%>
           </div>
         </div>
-        <%- include("partials/sidebar.ejs") %>
         <section id="movies">
+          <%- include ("partials/sidebar.ejs") %>
+          <% if (!search) { %>
           <section id="movies-title-bar">
             <div class="current-title">
               <span class="current">All Movies</span>
@@ -52,6 +53,7 @@
               </div>
             </div>
           </section>
+          <%}%>
           <section id="movies-list">
             <% movies.forEach(movie=>{ %>
             <div class="movie-container animate-bottom hide">
@@ -89,10 +91,10 @@
             </div>
             <%})%>
           </section>
-          <% if (!search) { %>
+        </section>
+        <% if (!search) { %>
           <div class="pagination"></div>
           <%}%>
-        </section>
       </section>
       <%- include("partials/footer.ejs") %>
     </div>

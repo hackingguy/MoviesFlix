@@ -61,14 +61,18 @@
     list-style-type: none;
 }
 
-.href-links ul li {
-    margin-left: 20px;
-}
 
 .href-links ul li a {
-    color: white;
     font-weight: bolder;
-    text-decoration: underline;
+    text-decoration: none;
+    padding:10px;
+    transition: 0.2s all ease;
+}
+
+.href-links ul li a:hover {
+  color:black;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width:786px) {
@@ -125,6 +129,12 @@
       border: none;
       transition: .2s all
     }
+
+    
+  .form-active {
+    height: 35px;
+    padding: 8px 18px;
+  }
   
     .search-bar-input {
       color: #000
