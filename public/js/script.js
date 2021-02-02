@@ -1,3 +1,14 @@
+if(document.readyState === 'ready' || document.readyState === 'complete') {
+    console.log(document.querySelector(".loader"))
+    document.querySelector(".loader").style.display="none";
+} else {
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+      document.querySelector(".loader").style.display="none";
+    }
+  }
+}
+
 function pagination(n) {
   var addPages = document.querySelector("div.pagination");
   var start;

@@ -1,4 +1,12 @@
+* {
+  margin:0;
+  padding:0;
+  color:white;
+  font-family: "Montserrat";
+}
+
 .nav-bar {
+    background-color: #000;
     display: flex;
     justify-content: space-evenly;
     z-index: 1;
@@ -78,7 +86,6 @@
 @media only screen and (max-width:786px) {
     .nav-bar {
       height: unset;
-      margin-top: 10px;
       flex-direction: column;
       border: 0;
       align-items: center;

@@ -7,9 +7,10 @@ const app = express();
 
 const connectDB = require("./config/db");
 const indexRoute = require("./routes/index");
-const movieRoute = require("./routes/movies");
+const movieRoute = require("./routes/movie");
 const searchRoute = require("./routes/search");
 const apiRoute = require("./routes/api");
+const loginRoute = require('./routes/login');
 
 //Connecting To Database
 connectDB();
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRoute);
 app.use("/movie", movieRoute);
 app.use("/search",searchRoute);
+app.use("/login",loginRoute);
 
 //API Routes
 app.use("/api",apiRoute);

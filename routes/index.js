@@ -1,5 +1,5 @@
 var express = require('express');
-var {getMovies} = require('../controllers/movies')
+var {getMovies} = require('../controllers/index')
 var router = express.Router();
 
 // @GET /index

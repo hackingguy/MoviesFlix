@@ -121,17 +121,18 @@ header {
   position: relative;
   grid-template-areas:
     "hero"
-    "movies" "pagination";
+    "movies""pagination";
   grid-area: mv-cntr;
   min-height: 100vh;
 }
 
 #movies-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  position: relative;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   justify-content: center;
-  grid-gap:1rem;
-  padding:1rem;
+  grid-gap: 1rem;
+  padding: 1rem;
 }
 
 #movies-title-bar {
@@ -176,7 +177,7 @@ header {
 .movie-container {
   position: relative;
   max-width: 100%;
-  height:auto;
+  height: auto;
   text-align: center;
   transition: .5s all ease;
 }
@@ -254,8 +255,9 @@ header {
   font-weight: bolder;
   font-size: 20px;
   border-radius: 10px;
-  padding:10px;
+  padding: 10px;
 }
+
 .page-num {
   padding: 0 10px;
 }
@@ -346,4 +348,15 @@ header {
 .page-active {
   background-color: #fff;
   color: black;
+}
+
+.loader {
+  position: absolute;
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: black;
+  z-index: 1;
 }

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="/css/nav.css"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
       rel="stylesheet"
@@ -55,6 +54,7 @@
           </section>
           <%}%>
           <section id="movies-list">
+            <div class="loader"><div class="loading"></div></div>
             <% movies.forEach(movie=>{ %>
             <div class="movie-container animate-bottom hide">
               <a href='/movie/?id=<%= movie["_id"] %>' class="movie-link">
