@@ -15,20 +15,18 @@ module.exports.loginPost = async(req,res)=>{
     let curr = await user.findOne({email:email});
     if(!curr) return res.status(400).send({"error":"Invalid Email Or Password"});
     let isValid = await bcrypt.compare(password,curr.password);
-    if(isValid){
+    if(isValid)
         res.send({_id:curr._id});
-    }
-    else {
+    else 
         res.status(400).send({"error":"Invalid Email Or Password"});
-    }
 }
 
 
 module.exports.registerPost = async(req,res)=>{
-    let {name,email,password} = req.body;
+    let usr = _(req.body).pick(["name","email","password"]);
     let salt = await bcrypt.genSalt(10);
-    let hash = await bcrypt.hash(pass,salt);
-    let user = new User.user(_(req.body).pick(["name","email","password"]))
+    usr.password = await bcrypt.hash(usr.password,salt);
+    let user = new User.user(usr);
     let r = await user.save();
-    res.send({_id:user._id});
+    res.send({_id:r._id});
 }

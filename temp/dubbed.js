@@ -1,4 +1,4 @@
-const {cinema} = require('../../models/movie')
+const {cinema} = require('../models/movie')
 const axios = require("axios")
 
 exports.playController = (req,res)=>{

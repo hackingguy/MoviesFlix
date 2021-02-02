@@ -1,6 +1,6 @@
-const {cinema} = require('../../models/movie')
-const {getDirectLink} = require('../../utils/getDirectLink')
-const sanitizer = require('../../utils/sanitize')
+const {cinema} = require('../models/movie')
+const {getDirectLink} = require('../utils/getDirectLink')
+const sanitizer = require('../utils/sanitize')
 const axios = require("axios")
 
 exports.playController= async(req,res)=>{

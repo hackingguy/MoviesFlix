@@ -40,7 +40,6 @@ body { background:url("https://assets.nflxext.com/ffe/siteui/vlv3/757ab38f-5d08-
 }
 .wrapper {
   width:fit-content;
-  height:500px;
   width:400px;
   border-radius:5px;
   overflow:hidden;
@@ -87,4 +86,11 @@ input {
   border:none;
   color:white;
   cursor:pointer;
+}
+
+@media only screen and (max-width:410px) {
+  .wrapper {
+    height:auto;
+    width: 100%;
+  }
 }

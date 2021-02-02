@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Moviesflix</title>
+  <title>Register | Moviesflix</title>
   <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
@@ -13,12 +13,13 @@
   <div class="wrapper">
       <div class="sign-in">
         <h1 class="sign">
-        Sign In
+        Sign Up
       </h1>
-      <form action="/auth/" method="POST" class="">
+      <form action="/register" method="POST" class="">
+        <input type="text" name="name" placeholder="Name" class="email">
         <input type="text" name="email" placeholder="Email" class="email">
-        <input type="text" placeholder="Password" class="password">
-        <input type="submit" class="submit" value="Sign In">
+        <input type="password" name="password" placeholder="Password" class="password">
+        <input type="submit" class="submit" value="Sign Up">
       </form>
     </div>
   </div>
