@@ -73,7 +73,6 @@ body {
     flex-direction: column;
     padding: 2vw;
     flex: 3;
-    max-width: 750px;
     min-width: 400px;
 }
 

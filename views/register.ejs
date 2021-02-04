@@ -7,22 +7,46 @@
   <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-  <div class="logo">
+  <a class="logo" href="/">
     <img src="https://fontmeme.com/permalink/210128/2dd1c559b9f59998c51b723226715d97.png" alt="">
-  </div>
+  </a>
   <div class="wrapper">
       <div class="sign-in">
         <h1 class="sign">
         Sign Up
       </h1>
       <form action="/register" method="POST" class="">
-        <input type="text" name="name" placeholder="Name" class="email">
+        <input type="text" name="name" placeholder="Name" class="name">
         <input type="text" name="email" placeholder="Email" class="email">
         <input type="password" name="password" placeholder="Password" class="password">
         <input type="submit" class="submit" value="Sign Up">
       </form>
+      <div class="register-forgot">
+        <span>Already have a account?</span><a href="/login">Login Here
     </div>
   </div>
   <div class="overlay"></div>
+  <script>
+    document.querySelector(".submit").addEventListener('click',async(e)=>{
+      e.preventDefault();
+      let email = document.querySelector(".email").value;
+      let pass = document.querySelector(".password").value;
+      let name = document.querySelector(".name").value;
+      console.log(email,pass)
+      let res = await fetch("/register",{
+        "method":"POST",
+        "headers":{
+          "Content-Type":"application/json"
+        },
+        "body":JSON.stringify({
+          "email":email,
+          "password":pass,
+          "name":name
+        })
+      })
+      res = await res.json();
+      console.log(res);
+    })
+  </script>
 </body>
 </html>

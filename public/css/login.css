@@ -88,6 +88,23 @@ input {
   cursor:pointer;
 }
 
+.register-forgot {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-forgot a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bolder;
+  transition: 0.2s all ease;
+}
+
+.register-forgot a:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width:410px) {
   .wrapper {
     height:auto;

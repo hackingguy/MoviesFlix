@@ -24,6 +24,7 @@ app.use(compression());
 app.use(helmet({
     contentSecurityPolicy: false,
 }));
+
 app.use('/favicon.ico', express.static('./public/imgs/favicon.ico'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
