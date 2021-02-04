@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "pm2 start ./bin/www --watch",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "heroku": "node ./bin/www"
   },
   "dependencies": {
     "axios": "^0.21.1",
