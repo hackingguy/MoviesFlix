@@ -20,8 +20,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
@@ -96,15 +94,15 @@ Project Link: [https://github.com/hackingguy/MoviesFlix](https://github.com/hack
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/hackingguy/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/hackingguy/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/hackingguy/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/hackingguy/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/hackingguy/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/hackingguy/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/hackingguy/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/hackingguy/repo/issues
-[license-shield]: https://img.shields.io/github/license/hackingguy/repo.svg?style=for-the-badge
-[license-url]: https://github.com/hackingguy/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/hackingguy/MoviesFlix.svg?style=for-the-badge
+[contributors-url]: https://github.com/hackingguy/MoviesFlix/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/hackingguy/MoviesFlix.svg?style=for-the-badge
+[forks-url]: https://github.com/hackingguy/MoviesFlix/network/members
+[stars-shield]: https://img.shields.io/github/stars/hackingguy/MoviesFlix.svg?style=for-the-badge
+[stars-url]: https://github.com/hackingguy/MoviesFlix/stargazers
+[issues-shield]: https://img.shields.io/github/issues/hackingguy/MoviesFlix.svg?style=for-the-badge
+[issues-url]: https://github.com/hackingguy/MoviesFlix/issues
+[license-shield]: https://img.shields.io/github/license/hackingguy/MoviesFlix.svg?style=for-the-badge
+[license-url]: https://github.com/hackingguy/MoviesFlix/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/hackingguy
