@@ -1,5 +1,9 @@
 const cinema = require("../models/movie")
 
+module.exports.home = async(req,res) => {
+    res.send("API is working perfectly");
+}
+
 module.exports.latest = async(req,res)=>{
     let num = parseInt(req.params.num);
     let skip = parseInt(req.params.skip);

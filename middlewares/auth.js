@@ -1,19 +1,19 @@
 const jwt = require('jsonwebtoken')
 
-async(req,res,next)=>{
+var auth = async(req,res,next)=>{
     try{
         //Authorization: Bearer <Auth Token>
-        let token = req.headers.authorization;
-        token = token.split(" ")[1];
-        if(!token) return res.status(400).send({"error":"Access Token Missing"});
-        let payload = jwt.verify(token,process.env.JWT_SECRET_KEY);
+        let token = req.headers.cookie.split("token=")[1].split(";")[0];
+        // token = token.split(" ")[1];
+        // if(!token) return res.status(400).send({"error":"Access Token Missing"});
+        let payload = jwt.verify(token,process.env.JWT_SECRET_TOKEN);
         let userID = payload._id;
         req.userID = userID;
+        return next();
     }
-    catch{
-        return res.status(400).send({"error":"Access Denied"})
+    catch(err){
+        return res.status(400).redirect("/login");
     }
-    next();
 }
 
 module.exports = auth;

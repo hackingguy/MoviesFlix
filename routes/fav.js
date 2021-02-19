@@ -1,11 +1,11 @@
 var express = require('express');
 var auth = require('../middlewares/auth')
-var {getMovies} = require('../controllers/index')
+var addFav = require('../controllers/fav')
 var router = express.Router();
 
-// @GET /index
-// @desc GET Request To Index Page
+// @POST /add-fav
+// @desc Post Request To Add a Favourite
 
-router.get("/",auth,getMovies);
+router.post('/',auth,addFav);
 
 module.exports = router;

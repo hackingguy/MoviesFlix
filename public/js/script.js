@@ -38,11 +38,17 @@ function sideCollapse() {
   });
 }
 
+function setVars(){
+  var a = document.querySelectorAll(".href-links ul li a")[3];
+  a.innerHTML = JSON.parse(atob(document.cookie.split("name=")[1]))["name"].split(" ")[0];
+}
+
 let start = () => {
   let host = window.location.href;
   if (host.includes("search"))
     document.querySelector(".hero").style.display = "none";
   else pagination(8);
+  setVars();
   sideCollapse();
 };
 

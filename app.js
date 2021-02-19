@@ -10,7 +10,8 @@ const indexRoute = require("./routes/index");
 const playRoute = require("./routes/play");
 const searchRoute = require("./routes/search");
 const apiRoute = require("./routes/api");
-const authRoute = require('./routes/auth')
+const authRoute = require('./routes/auth');
+const favRoute = require('./routes/fav')
 
 //Connecting To Database
 connectDB();
@@ -22,7 +23,7 @@ app.set("view engine", "ejs");
 //Encoding
 app.use(compression());
 app.use(helmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: false
 }));
 
 app.use('/favicon.ico', express.static('./public/imgs/favicon.ico'));
@@ -34,12 +35,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRoute);
 app.use("/movie", playRoute);
 app.use("/search",searchRoute);
+app.use("/add-fav",favRoute)
 app.use(authRoute);
 
-//API Routes
+//API Route
 app.use("/api",apiRoute);
 
-app.use((req,res)=>{
+app.all((req,res)=>{
     res.status(404).render('404')
 })
 

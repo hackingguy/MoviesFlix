@@ -16,8 +16,10 @@
         Sign In
       </h1>
       <form action="/login" method="POST" class="">
-        <input type="text" name="email" required placeholder="Email" class="email">
-        <input type="password" name="password" required placeholder="Password" class="password">
+        <input type="text" autocomplete="off" name="email" required placeholder="Email" class="email">
+        <div class="error"></div>
+        <input type="password" autocomplete="off" name="password" required placeholder="Password" class="password">
+        <div class="error"></div>
         <input type="submit" class="submit" value="Sign In">
       </form>
       <div class="register-forgot">
@@ -27,11 +29,15 @@
   </div>
   <div class="overlay"></div>
   <script>
+    
     document.querySelector(".submit").addEventListener('click',async(e)=>{
       e.preventDefault();
+      let errors = document.querySelectorAll(".error");
+      errors.forEach(e=>{
+        e.textContent="";
+      })
       let email = document.querySelector(".email").value;
       let pass = document.querySelector(".password").value;
-      console.log(email,pass)
       let res = await fetch("/login",{
         "method":"POST",
         "headers":{
@@ -43,7 +49,18 @@
         })
       })
       res = await res.json();
-      console.log(res);
+      if(res["_id"]){
+        console.log(res);
+        document.cookie=`token=${res['Token']};`;
+        document.cookie=`name=${btoa(JSON.stringify({"id":res["_id"],"name":res["name"]}))}`;
+        window.location='/';
+      }
+      else{
+        let errors = document.querySelectorAll(".error");
+        errors.forEach(e=>{
+          e.textContent = res['error'];
+        })
+      }
     })
   </script>
 </body>

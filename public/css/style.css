@@ -198,6 +198,7 @@ header {
 
 .poster-img {
   width: 100%;
+  max-height: 250px;
   display: block;
   border-radius: 5px
 }
@@ -324,6 +325,7 @@ header {
 @media only screen and (max-width:786px) {
   .movie-container {
     width: 100%;
+    max-height: 10000px;
   }
 
 }

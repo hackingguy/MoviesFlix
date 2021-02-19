@@ -45,6 +45,12 @@ class Movies {
       .select({ poster: 1, title: 1 });
     return found;
   }
+
+  async isExists(id){
+    let mv = await this.model.findOne({_id:id});
+    if(!mv) return false;
+    return true;
+  }
 }
 
 module.exports.cinema = new Movies("movies");

@@ -9,7 +9,7 @@ exports.getMovies = async(req, res) => {
     let movies = await cinema.getMovies(16,pg);
     let readFile = util.promisify(fs.readFile);
     let top10 = await readFile("./public/data.json")
-    top10 = JSON.parse(top10)
+    top10 = JSON.parse(top10);
     res.render("index",{
         top10:top10,
         movies:movies,

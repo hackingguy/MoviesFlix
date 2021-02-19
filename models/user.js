@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken')
 const schema = mongoose.Schema;
 
 const user = new schema({
-    // userID:{
-    //     type:String,
-    //     required:true,
-    //     minlength:6,
-    //     maxlength:100,
-    // },
+    name:{
+        type:String,
+        required:true,
+        minlength:3,
+        maxlength:100
+    },
     email:{
         type:String,
         required:true,
@@ -20,11 +19,10 @@ const user = new schema({
         required:true,
         minlength:8,
         maxlength:1024
-    }
+    },
+    fav: [{
+        type:String
+    }]
 })
 
-module.exports.generateToken = (id)=>{
-    return jwt.sign({_id:id},process.env.JWT_SECRET_TOKEN);
-}
-
-module.exports.user = mongoose.model("users",user);
+module.exports = mongoose.model("users",user);
