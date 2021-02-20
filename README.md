@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project  
 
-![ScreenShot](https://i.imgur.com/0vw9YMd.jpg)
+![ScreenShot](https://i.imgur.com/ikvxSbo.png)
 
 
 ### Built With
