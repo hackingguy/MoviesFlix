@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project  
 
-![ScreenShot](https://i.imgur.com/ikvxSbo.png)
+[![ScreenShot](https://i.imgur.com/ikvxSbo.png)](https://whimsical.com/netflix-clone-F57zVrKv1T1SvdWU8RnGTS)
 
 
 ### Built With
