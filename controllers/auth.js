@@ -4,7 +4,9 @@ const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 
 function generateToken(id) {
-  return jwt.sign({ _id: id }, process.env.JWT_SECRET_TOKEN);
+  return jwt.sign({ _id: id }, process.env.JWT_SECRET_TOKEN,{
+    expiresIn:'24h' //Soon Implementing refresh token authentication
+  });
 }
 
 module.exports.loginGet = async (req, res) => {

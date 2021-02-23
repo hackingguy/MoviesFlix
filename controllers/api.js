@@ -1,7 +1,8 @@
-const cinema = require("../models/movie")
+const cinema = require("../models/movie");
 
+// @todo Add Access Token Authentication
 module.exports.home = async(req,res) => {
-    res.send("API is working perfectly");
+    res.send("<style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');h1 {font-family: 'Montserrat', sans-serif;}</style><h1>API Is Working Perfectly</h1>");
 }
 
 module.exports.latest = async(req,res)=>{
