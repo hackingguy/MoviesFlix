@@ -9,7 +9,7 @@
 }
 
 :root {
-  --border-color:rgba(255, 255, 255, 0.4);
+  --border-color:rgba(255, 255, 255, 0.7);
   --main-color: #000000;
   --text-color: #ffffff;
 }
@@ -169,15 +169,15 @@ header {
   color: var(--text-color);
   padding: 15px;
   margin: 10px;
-  border-radius: 40px;
+  border-radius: 5px;
   cursor: pointer;
   outline: 0;
   transition: .2s ease
 }
 
 .title-button:hover {
-  color: var(--text-color);
-  background-color: var(--main-color);
+  color: var(--main-color);
+  background-color: var(--text-color);
   border: 1px solid var(--border-color)
 }
 
@@ -297,8 +297,6 @@ header {
   padding: 50px;
   user-select: none;
   border-top: 1px solid var(--border-color);
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px
 }
 
 @-webkit-keyframes spin {

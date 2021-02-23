@@ -10,7 +10,7 @@ var auth = async(req,res,next)=>{
         return next();
     }
     catch(err){
-        return res.status(400).redirect("/login");
+        return next();
     }
 }
 

@@ -6,7 +6,8 @@ const compression = require('compression');
 const app = express();
 
 const connectDB = require("./config/db");
-const indexRoute = require("./routes/index");
+const indexRoute = require('./routes/index');
+const homeRoute = require("./routes/home");
 const playRoute = require("./routes/play");
 const searchRoute = require("./routes/search");
 const apiRoute = require("./routes/api");
@@ -32,7 +33,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
-app.use("/", indexRoute);
+app.use("/",indexRoute)
+app.use("/home", homeRoute);
 app.use("/movie", playRoute);
 app.use("/search",searchRoute);
 app.use(favRoute);

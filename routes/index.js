@@ -1,11 +1,8 @@
 var express = require('express');
-var auth = require('../middlewares/auth')
-var {getMovies} = require('../controllers/index')
 var router = express.Router();
+var indexController = require('../controllers/index');
+var auth = require('../middlewares/auth')
 
-// @GET /index
-// @desc GET Request To Index Page
-
-router.get("/",auth,getMovies);
+router.get('/',auth,indexController.index);
 
 module.exports = router;
