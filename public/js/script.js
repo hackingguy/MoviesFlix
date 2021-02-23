@@ -26,6 +26,21 @@ function pagination(n) {
   document.querySelectorAll(`.page-num`)[0].classList.toggle("page-active");
 }
 
+function favs() {
+  document.querySelectorAll(".fav-icon").forEach(e=>{
+    e.addEventListener('click',(s)=>{
+      let id = e.parentElement.parentElement.nextElementSibling["href"].split("id=")[1];
+      fetch('/add-fav',{
+        method:"POST",
+        headers:{
+          "Content-type":"application/json"
+        },
+        body:JSON.stringify({"id":id})
+      });
+    })
+  })
+}
+
 function sideCollapse() {
   var search = document.querySelector(".fa-search");
   var nav = document.querySelector(".sidebar");
@@ -49,6 +64,7 @@ let start = () => {
     document.querySelector(".hero").style.display = "none";
   else pagination(8);
   setVars();
+  favs();
   sideCollapse();
 };
 

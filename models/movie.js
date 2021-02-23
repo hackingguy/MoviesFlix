@@ -10,7 +10,7 @@ const moviesSchema = new schema({
   source: Object,
 });
 
-class Movies {
+class Movies {  
   constructor(document) {
     this.document = document;
     this.model = mongoose.model(document, moviesSchema);
@@ -53,4 +53,4 @@ class Movies {
   }
 }
 
-module.exports.cinema = new Movies("movies");
+module.exports = new Movies("movies");

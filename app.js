@@ -35,13 +35,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRoute);
 app.use("/movie", playRoute);
 app.use("/search",searchRoute);
-app.use("/add-fav",favRoute)
+app.use(favRoute);
 app.use(authRoute);
 
 //API Route
 app.use("/api",apiRoute);
 
-app.all((req,res)=>{
+app.use((req,res)=>{
     res.status(404).render('404')
 })
 

@@ -14,7 +14,7 @@ a {
 html,body {
     width:100%;
     min-height:100%;
-    background-color: #1A202C;
+    background-color: #000;
 }
 
 .wrapper {
@@ -40,7 +40,7 @@ img {
     bottom: 0;
     width: 100%;
     user-select: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid #fff;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 }

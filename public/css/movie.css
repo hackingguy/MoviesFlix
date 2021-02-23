@@ -321,6 +321,7 @@ body {
     #movie-container {
         width:100%;
         border-top: 1px solid white;
+        min-width: unset;
     }
 
     #body-section {

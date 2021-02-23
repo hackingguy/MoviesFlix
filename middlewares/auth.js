@@ -4,8 +4,6 @@ var auth = async(req,res,next)=>{
     try{
         //Authorization: Bearer <Auth Token>
         let token = req.headers.cookie.split("token=")[1].split(";")[0];
-        // token = token.split(" ")[1];
-        // if(!token) return res.status(400).send({"error":"Access Token Missing"});
         let payload = jwt.verify(token,process.env.JWT_SECRET_TOKEN);
         let userID = payload._id;
         req.userID = userID;

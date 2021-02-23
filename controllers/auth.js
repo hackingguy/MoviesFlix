@@ -31,7 +31,6 @@ module.exports.loginPost = async (req, res) => {
   let isValid = await bcrypt.compare(password, curr.password);
   if (isValid) {
     let token = generateToken(curr._id);
-    console.log(curr)
     res.setHeader("Authorization", "Bearer " + token);
     res.send({ _id: curr._id, name: curr.name, Token: token });
   } else res.status(400).send({ error: "Invalid Email Or Password" });

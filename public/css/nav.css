@@ -107,13 +107,14 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      left: 40px;
+      left: 30px;
+      top: 30px;
       cursor: pointer
     }
   
     .search-icon {
-        top: 40px;
-        right: 0;
+        top: 28px;
+        right: -4px;
         display: block;
         position: absolute;
     }
@@ -151,7 +152,7 @@
     }
   
     .fa {
-      font-size: 1.5em
+      font-size: 1.25em
     }
   
     .fa-search {

@@ -1,8 +1,7 @@
-const {cinema} = require('../models/movie')
+const Movie = require('../models/movie')
 const sanitizer = require('../utils/sanitize')
 exports.searchController = (req,res)=>{
-    console.log(req.headers)
-    cinema.search(req.query.q).then(data=>{
+    Movie.search(req.query.q).then(data=>{
         res.render('index',{
             movies:data,
             sanitizer:sanitizer,

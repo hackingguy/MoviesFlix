@@ -95,6 +95,7 @@ input {
 }
 
 .register-forgot a {
+  margin-top:10px;
   color: #fff;
   text-decoration: none;
   font-weight: bolder;

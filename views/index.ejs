@@ -21,6 +21,7 @@
     <div class="wrapper">
       <%- include("partials/nav-bar.ejs") %>
       <section id="body-section">
+        <%if (top10) {%>
         <div class="hero">
           <div class="hero-section">
             <%if (top10) {%>
@@ -33,6 +34,7 @@
             <%}%>
           </div>
         </div>
+        <%}%>
         <section id="movies">
           <%- include ("partials/sidebar.ejs") %>
           <% if (!search) { %>
@@ -57,7 +59,6 @@
             <div class="loader"><div class="loading"></div></div>
             <% movies.forEach(movie=>{ %>
             <div class="movie-container animate-bottom hide">
-              <a href='/movie/?id=<%= movie["_id"] %>' class="movie-link">
                 <div class="poster">
                   <img
                     loading="lazy"
@@ -66,6 +67,9 @@
                     class="poster-img"
                   />
                   <div class="poster-overlay">
+                    <div class="fav-icon">
+                      <i class="fa fa-heart"></i>
+                    </div>
                     <div class="imdb-rating">
                       <span class="imdb">IMDB RATING</span>
                       <div class="stars">
@@ -81,13 +85,13 @@
                     </div>
                   </div>
                 </div>
+                <a href='/movie/?id=<%= movie["_id"] %>' class="movie-link">
                 <div class="movie-description">
                   <div class="movie-name">
                     <span><%= sanitizer(movie.title) %></span>
                   </div>
-                  <div class="imdb-rating"></div>
                 </div>
-              </a>
+                </a>
             </div>
             <%})%>
           </section>
