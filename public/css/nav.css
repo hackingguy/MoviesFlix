@@ -85,15 +85,15 @@
 
 .profile-img img {
   width:100%;
+  border-radius: 50%;
 }
 
 .profile-img {
+  position: relative;
   width:40px;
   height:40px;
   margin: 10px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 

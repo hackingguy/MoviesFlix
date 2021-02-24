@@ -92,14 +92,19 @@ input {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top:10px;
 }
 
 .register-forgot a {
-  margin-top:10px;
+  max-width: 50%;
+}
+
+.register-forgot a,.register-forgot span {
   color: #fff;
   text-decoration: none;
   font-weight: bolder;
   transition: 0.2s all ease;
+  margin:0px 4px;
 }
 
 .register-forgot a:hover {

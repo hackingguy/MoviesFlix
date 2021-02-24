@@ -1,44 +1,44 @@
 <section class="sidebar">
     <div class="sidebar-links">
       <div class="side-link-container">
-        <a href="#">
+        <a href="/home">
           <div class="in-side-container">
-            <div class="side-logo">
-              <img src="" alt="" class="side-icon" />
-            </div>
-            <span class="side-link"> All Movies </span>
+            <span class="side-link">Home</span>
           </div>
         </a>
       </div>
       <div class="side-link-container">
-        <a href="#">
+        <a href="/favourites">
           <div class="in-side-container">
-            <div class="side-logo">
-              <img src="" alt="" class="side-icon" />
-            </div>
-            <span class="side-link"> Latest </span>
+            <span class="side-link">Favourites</span>
           </div>
         </a>
       </div>
       <div class="side-link-container">
-        <a href="#">
+        <a href="/api">
           <div class="in-side-container">
-            <div class="side-logo">
-              <img src="" alt="" class="side-icon" />
-            </div>
-            <span class="side-link"> Bollywood </span>
+            <span class="side-link"> API </span>
           </div>
         </a>
       </div>
       <div class="side-link-container">
-        <a href="#">
+        <a href="/logout">
           <div class="in-side-container">
-            <div class="side-logo">
-              <img src="" alt="" class="side-icon" />
-            </div>
-            <span class="side-link"> Hollywood </span>
+            <span class="side-link">Log Out</span>
           </div>
         </a>
       </div>
     </div>
   </section>
+
+  <script>
+    var search = document.querySelector(".fa-search");
+    var nav = document.querySelector(".sidebar");
+    var burger = document.querySelector(".burger");
+    search.addEventListener("click", () => {
+      document.querySelector(".search").classList.toggle("form-active");
+    });
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("sidebar-active");
+    });
+  </script>

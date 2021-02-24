@@ -5,7 +5,7 @@ const _ = require("lodash");
 
 function generateToken(id,exp) {
   return jwt.sign({ _id: id }, process.env.JWT_SECRET_TOKEN,{
-    expiresIn:exp //Soon Implementing refresh token authentication
+    expiresIn:exp //Soon Implementing refresh token
   });
 }
 
@@ -33,7 +33,10 @@ module.exports.loginPost = async (req, res) => {
   let isValid = await bcrypt.compare(password, curr.password);
   if (isValid) {
     let token = generateToken(curr._id,'24h');
-    res.setHeader("Authorization", "Bearer " + token);
+    res.cookie("token",token,{
+      expires:new Date(Date.now()+1000*60*60*24),
+      httpOnly:true
+    });
     res.send({ _id: curr._id, name: curr.name, Token: token });
   } else res.status(400).send({ error: "Invalid Email Or Password" });
 };
@@ -51,5 +54,10 @@ module.exports.registerPost = async (req, res) => {
 };
 
 module.exports.logout = async(req,res) => {
+  let expToken = generateToken(req.userID,1);
+  res.cookie("token",expToken,{
+    expires:new Date(Date.now()+1),
+    httpOnly:true
+  })
   res.redirect('/login');
 }

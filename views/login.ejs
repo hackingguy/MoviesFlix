@@ -50,9 +50,6 @@
       })
       res = await res.json();
       if(res["_id"]){
-        console.log(res);
-        document.cookie=`token=${res['Token']};`;
-        document.cookie=`name=${btoa(JSON.stringify({"id":res["_id"],"name":res["name"]}))}`;
         window.location='/';
       }
       else{

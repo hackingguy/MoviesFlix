@@ -18,7 +18,7 @@ var getFav = async(req,res)=>{
     let uid = req.userID;
     let usr = await User.findOne({_id:uid});
     let movies = await Movie.model.find({ _id: { $in: usr['fav'] }});
-    res.render('index',({
+    res.render('home',({
         top10:false,
         movies:movies,
         sanitizer:sanitizer,

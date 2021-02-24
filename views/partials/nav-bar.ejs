@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/dropdown.css">
 <header>
   <nav class="nav-bar">
     <div class="burger">
@@ -33,10 +34,29 @@
         </li>
         <li>
           <div class="profile-img">
-            <img src="https://lh3.googleusercontent.com/ogw/ADGmqu-motqwe4QLwpNUm67y2w2FeckEPKA6vXSYioE4xw=s32-c-mo">
+            <div class="drop-down">
+              <a href="/edit-profile" class="dd-item">
+                  <img src="" alt="" class="drop-down-logo">
+                  <span>Edit Profile</span>
+              </a>
+              <a href="/logout" class="dd-item">
+                  <img src="" alt="" class="drop-down-logo">
+                  <span>Log Out</span>
+              </a>
+          </div>
+            <img src="https://lh3.googleusercontent.com/ogw/ADGmqu-motqwe4QLwpNUm67y2w2FeckEPKA6vXSYioE4xw=s32-c-mo" class="profile-pic">
           </div>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+<script>
+  let logo = document.querySelector(".profile-pic");
+  logo.addEventListener('click',()=>{
+    let dd = document.querySelector('.drop-down');
+    dd.classList.toggle('dd-active');
+    dd.style.opacity = 1;
+
+  });
+</script>

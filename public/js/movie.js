@@ -31,10 +31,10 @@ function hlsStream() {
   if (link.indexOf(".m3u8") > -1) {
     video.innerHTML = "";
     if (!Hls.isSupported()) {
-      console("Supported");
+      console("HLS Not Supported");
       video.source = { type: "video", sources: [{ src: link }] };
     } else {
-      console.log("NSupported");
+      console.log("HLS Supported");
       const hls = new Hls();
       hls.loadSource(link);
       hls.attachMedia(video);
