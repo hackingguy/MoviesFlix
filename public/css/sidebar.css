@@ -64,7 +64,7 @@
         overflow: hidden;
         transition: .2s all;
         -webkit-transition: .2s all;
-        top:0;
+        top:85px;
         z-index:1;
     }
 

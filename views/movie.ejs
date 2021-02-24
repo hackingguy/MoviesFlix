@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= sanitizer(title) %> | MovieFlix</title>
-    <link rel="stylesheet" href="/css/sidebar.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
       rel="stylesheet"
@@ -21,7 +20,6 @@
     <div class="wrapper">
       <%- include("partials/nav-bar.ejs") %>
       <main class="container">
-        <%- include("partials/sidebar.ejs") %>
         <!-- Do Not Edit Below Block By Javascript, Let it Handle By Plyr else it will break -->
         <section id="movie-container">
           <div id="main-title"><%= sanitizer(title) %></div>

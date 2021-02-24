@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/sidebar.css">
 <link rel="stylesheet" href="/css/dropdown.css">
 <header>
   <nav class="nav-bar">
+    <%- include("sidebar.ejs") %>
     <div class="burger">
       <div class="ham-line"></div>
       <div class="ham-line"></div>
@@ -57,6 +59,14 @@
     let dd = document.querySelector('.drop-down');
     dd.classList.toggle('dd-active');
     dd.style.opacity = 1;
-
+  });
+  var search = document.querySelector(".fa-search");
+  var nav = document.querySelector(".sidebar");
+  var burger = document.querySelector(".burger");
+  search.addEventListener("click", () => {
+    document.querySelector(".search").classList.toggle("form-active");
+  });
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("sidebar-active");
   });
 </script>

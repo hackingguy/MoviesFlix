@@ -99,11 +99,12 @@
 
 @media only screen and (max-width:786px) {
     .nav-bar {
+      position: relative;
       height: unset;
       flex-direction: column;
       border: 0;
       align-items: center;
-      padding: 20px
+      padding: 20px;
     }
   
     .href-links {

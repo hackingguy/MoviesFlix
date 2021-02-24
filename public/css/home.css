@@ -349,17 +349,13 @@ header {
 
 @media only screen and (max-width:460px) {
 
-  .rating {
-    display: none
-  }
-
   .title-button {
     padding: 8px;
     border-radius: 5px
   }
 
   .hero {
-    height: 200px;
+    height: 225px;
   }
 
   .hero-poster {
