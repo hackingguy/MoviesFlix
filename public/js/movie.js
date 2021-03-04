@@ -45,7 +45,6 @@ function hlsStream() {
 }
 
 function start() {
-  sideCollapse();
   hlsStream();
   initDOM()
     .then(() => console.log("Everything Intialized Perfectly"))

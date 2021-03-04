@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= sanitizer(title) %> | MovieFlix</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="/css/movie.css" />
     <link
       rel="stylesheet"
@@ -52,11 +48,11 @@
           <div class="players">
             <a class="player" id="vlc" href="vlc://<%= sourceLink.split("https://cors.maplehacks.ml/")[1] %>">
               <span>Play With VLC</span>
-              <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/vlc.png" alt="">
+              <img src="/icons/vlc.png" alt="">
             </a>
               <a class="player" id="mx" href="intent:<%= sourceLink.split("https://cors.maplehacks.ml/")[1] %>#Intent;package=com.mxtech.videoplayer.ad;S.title=undefined;end">
               <span>Play With MX Player</span>
-              <img src="https://cdn.jsdelivr.net/gh/Aicirou/goindex-theme-acrou@v2.0.8/dist/images/player/mxplayer.png" alt="">
+              <img src="/icons/mxplayer.png" alt="">
             </a>
           </div>
         </section>

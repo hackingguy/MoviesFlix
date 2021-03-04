@@ -24,13 +24,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:40px;
+    height:100vh;
 }
 .wrapper img {
-    height:30%;
-    width: 30%;
+    width: 50%;
 }
 
+.logo {
+    width:220px;
+    position:absolute;
+  }
+  .logo img {
+    width:100%;
+    padding:10px;
+    margin:5px;
+  }
 #footer-section {
     color: white;
     text-align: center;

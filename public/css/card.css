@@ -1,0 +1,93 @@
+.movie-container {
+  position: relative;
+  /* max-width: 100%; */
+  height: auto;
+  text-align: center;
+  transition: .5s all ease;
+}
+
+.poster {
+  margin: auto;
+  /* max-width: 100%; */
+  display: inline-block;
+  transition: .4s;
+  position: relative;
+  background-image: linear-gradient(45deg, rgba(52, 52, 52, 1), rgb(16, 16, 17, 1));
+}
+
+.poster-img {
+  width: 100%;
+  max-height: 250px;
+  display: block;
+  border-radius: 5px
+}
+
+.poster:hover {
+  z-index: 10;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, .192);
+  -webkit-box-shadow: 0 8px 16px 0 rgba(255, 255, 255, .192);
+}
+
+.poster-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, .481);
+  display: flex;
+  transition: .5s ease;
+  color: var(--text-color);
+  overflow: hidden;
+  flex-direction: column;
+  opacity: 0;
+  justify-content: flex-end;
+  padding: 1vh;
+  font-size: small
+}
+
+.poster:hover .poster-overlay {
+  opacity: 1
+}
+
+.poster-description {
+  max-height: 50%;
+  overflow-y: hidden;
+  position: relative
+}
+
+.poster-description:after {
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 0
+}
+
+.checked {
+  color: gold
+}
+
+.fav-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.fav-icon .fa {
+  font-size: 1.5rem;
+  transition: .5s all;
+}
+
+.fav-icon .fa:visited {
+  color: red;
+}
+
+.movie-name {
+  color: var(--text-color);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 25px
+}

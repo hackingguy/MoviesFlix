@@ -12,7 +12,7 @@ body {
 }
 
 body {
-    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/399d6794-b770-4b21-992d-a3326710a170/b4539c98-22c8-42d6-bb89-6d97390911fb/NL-en-20210215-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+    background: url("/imgs/banners/banner-2.jpg");
     width: 100%;
 }
 
@@ -44,13 +44,16 @@ body {
     display: flex;
     height:100%;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-left: 20px;
+    text-align: center;
 }
 
 .hero-text {
     color:white;
-    font-size:3rem;
+    font-size:5rem;
+    width: 50%;
     font-weight: bolder;
 }
 
@@ -73,14 +76,12 @@ body {
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
-    border:1px solid white;
     text-decoration: none;
 }
 
 .join-now:hover {
     background-color: white;
     color:red;
-    border:1px solid red;
 }
 
 @media only screen and (max-width:700px){

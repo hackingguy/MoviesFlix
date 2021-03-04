@@ -12,6 +12,7 @@ module.exports = (title)=>{
                     .split(" HD 720p")[0]
                     .split(" HD-720p")[0]
                     .split(" HD-720")[0]
-                    .split(" Hd-720p")[0];
+                    .split(" Hd-720p")[0]
+                    .split(":")[0];
     return formatted;
 }

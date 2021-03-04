@@ -1,0 +1,12 @@
+<div class="hero">
+    <div class="hero-section">
+        <%if (top10) {%>
+            <% top10.forEach(top=>{ %>
+                <a href="<%= top.link %>" class="hero-poster">
+                <div class="hero-poverlay"></div>
+                <img src="<%= top.poster %>" alt="" />
+                </a>
+            <%})%>
+        <%}%>
+    </div>
+</div>

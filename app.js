@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
-app.use("/",indexRoute)
+app.use("/",indexRoute);
 app.use("/home", homeRoute);
 app.use("/movie", playRoute);
 app.use("/search",searchRoute);

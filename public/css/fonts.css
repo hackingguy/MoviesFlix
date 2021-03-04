@@ -1,0 +1,84 @@
+
+@font-face {
+    font-family: 'Netflix Sans';
+    font-weight: 100;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff) format('woff')
+}
+
+@font-face {
+    font-family: 'Netflix Sans';
+    font-weight: 300;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff) format('woff')
+}
+
+@font-face {
+    font-family: 'Netflix Sans';
+    font-weight: 400;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff) format('woff')
+}
+
+@font-face {
+    font-family: 'Netflix Sans';
+    font-weight: 700;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff) format('woff')
+}
+
+@font-face {
+    font-family: 'Netflix Sans';
+    font-weight: 800;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff) format('woff')
+}
+
+@font-face {
+    font-family: 'Netflix Sans';
+    font-weight: 900;
+    font-display: optional;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2) format('woff2'),url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff) format('woff')
+}
+
+.netflix-sans-font-loaded {
+    font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif
+}
+
+.netflix-sans-font-loaded.nkufi-font-loaded {
+    font-family: NKufi,'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif
+}
+
+.netflix-sans-font-loaded.graphik-font-loaded {
+    font-family: GraphikTH,'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif
+}
+
+.error-page {
+    font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 10px;
+    line-height: 1.2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    background: rgba(0,0,0,.18);
+    bottom: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    left: 0;
+    margin-top: 68px;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000
+}
