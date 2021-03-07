@@ -4,6 +4,50 @@ const jwt = require("jsonwebtoken");
 const Joi = require('joi');
 const _ = require("lodash");
 
+
+function customErrors(name,limit){
+  return {
+    'string.base': `${name} is Invalid`,
+    'string.empty': `${name} cannot be an Empty`,
+    'string.min': `${name} must have ${limit} characters`,
+    'string.invalid:': `${name} is Invalid`,
+    'any.required': `${name} is a required field`
+  }
+}
+
+const validateLogin = Joi.object({
+  email:Joi.string()
+        .email()
+        .min(5)
+        .max(40)
+        .required()
+        .messages(customErrors("Email",5)),
+  password:Joi.string()
+        .min(6)
+        .max(50)
+        .required()
+        .messages(customErrors("Password",8))
+});
+
+const validateRegister = Joi.object({
+  name:Joi.string()
+      .min(3)
+      .max(30)
+      .required()
+      .messages(customErrors("Name",3)),
+  email:Joi.string()
+        .email()
+        .min(5)
+        .max(40)
+        .required().error(new Error("Email is invalid"))
+        .messages(customErrors("Email",5)),
+  password:Joi.string()
+        .min(6)
+        .max(50)
+        .required()
+        .messages(customErrors("Password",8))
+});
+
 function generateToken(id,exp) {
   return jwt.sign({ _id: id }, process.env.JWT_SECRET_TOKEN,{
     expiresIn:exp //Soon Implementing refresh token
@@ -29,6 +73,9 @@ module.exports.registerGet = async (req, res) => {
 module.exports.loginPost = async (req, res) => {
   if(req.userID) return res.send({"error":"You Need To Log Out!"});
   let { email, password } = req.body;
+  let value = validateLogin.validate(req.body);
+  if(value.error)
+    return res.send({error:value.error.details[0].message});
   let curr = await User.model.findOne({ email: email });
   if (!curr)
     return res.status(400).send({ error: "Invalid Email Or Password" });
@@ -46,6 +93,9 @@ module.exports.loginPost = async (req, res) => {
 module.exports.registerPost = async (req, res) => {
   if(req.userID) return res.send({"error":"You Need To Log Out!"});
   let usr = _.pick(req.body, ["name", "email", "password"]);
+  let value = validateRegister.validate(usr);
+  if(value.error)
+      return res.send({error:value.error.details[0].message});
   let a = await User.model.findOne({ email: usr.email }).exec();
   if (a) return res.status(400).send({ error: "User Already Registered" });
   let salt = await bcrypt.genSalt(10);

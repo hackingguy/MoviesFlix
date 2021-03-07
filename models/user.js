@@ -3,22 +3,13 @@ const schema = mongoose.Schema;
 
 const userSchema = new schema({
     name:{
-        type:String,
-        required:true,
-        minlength:3,
-        maxlength:100
+        type:String
     },
     email:{
-        type:String,
-        required:true,
-        minlength:6,
-        maxlength:512
+        type:String
     },
     password:{
-        type:String,
-        required:true,
-        minlength:8,
-        maxlength:1024
+        type:String
     },
     fav: [{
         type:String
