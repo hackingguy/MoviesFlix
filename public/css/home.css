@@ -248,6 +248,7 @@ header {
   .poster-img {
     max-height: 10000px;
   }
+  
 }
 
 @media only screen and (max-width:460px) {
