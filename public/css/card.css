@@ -75,13 +75,13 @@
   cursor: pointer;
 }
 
-.fav-icon .fa {
+.fav-icon i {
   font-size: 1.5rem;
   transition: .5s all;
 }
 
-.fav-icon .fa:visited {
-  color: red;
+.fav-active {
+  color:red;
 }
 
 .movie-name {

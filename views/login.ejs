@@ -1,64 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Moviesflix</title>
-  <link rel="stylesheet" href="/css/login.css">
-</head>
-<body>
-  <a class="logo" href="/">
-    <img src="/imgs/logo.png" alt="">
-  </a>
-  <div class="wrapper">
-      <div class="sign-in">
-        <h1 class="sign">
-        Sign In
-      </h1>
-      <form action="/login" method="POST" class="">
-        <input type="text" autocomplete="off" name="email" required placeholder="Email" class="email">
-        <div class="error"></div>
-        <input type="password" autocomplete="off" name="password" required placeholder="Password" class="password">
-        <div class="error"></div>
-        <input type="submit" class="submit" value="Sign In">
-      </form>
-      <div class="register-forgot">
-        <a href="/register">Register Here
-        </a><a href="/forgot-password">Forgot Password?</a></div>
-    </div>
-  </div>
-  <div class="overlay"></div>
-  <script>
-    
-    document.querySelector(".submit").addEventListener('click',async(e)=>{
-      e.preventDefault();
-      let errors = document.querySelectorAll(".error");
-      errors.forEach(e=>{
-        e.textContent="";
-      })
-      let email = document.querySelector(".email").value;
-      let pass = document.querySelector(".password").value;
-      let res = await fetch("/login",{
-        "method":"POST",
-        "headers":{
-          "Content-Type":"application/json"
-        },
-        "body":JSON.stringify({
-          "email":email,
-          "password":pass
-        })
-      })
-      res = await res.json();
-      if(res["_id"]){
-        window.location='/';
-      }
-      else{
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Moviesflix</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <a class="logo" href="/">
+      <img src="/imgs/logo.png" alt="" />
+    </a>
+      <div class="wrapper">
+        <div class="loading"></div>
+        <div class="sign-in">
+          <h1 class="sign">Sign In</h1>
+          <form action="/login" method="POST" class="">
+            <input
+              type="text"
+              autocomplete="off"
+              name="email"
+              required
+              placeholder="Email"
+              class="email"
+            />
+            <div class="error"></div>
+            <input
+              type="password"
+              autocomplete="off"
+              name="password"
+              required
+              placeholder="Password"
+              class="password"
+            />
+            <div class="error"></div>
+            <input type="submit" class="submit" value="Sign In" />
+          </form>
+          <div class="register-forgot">
+            <a href="/register">Register Here </a
+            ><a href="/forgot-password">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    <div class="overlay"></div>
+    <script>
+      document.querySelector(".submit").addEventListener("click", async (e) => {
+        e.preventDefault();
+        document.querySelector(".loading").style.display = "block";
         let errors = document.querySelectorAll(".error");
-        errors.forEach(e=>{
-          e.textContent = res['error'];
-        })
-      }
-    })
-  </script>
-</body>
+        errors.forEach((e) => {
+          e.textContent = "";
+        });
+        let email = document.querySelector(".email").value;
+        let pass = document.querySelector(".password").value;
+        let res = await fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: pass,
+          }),
+        });
+        res = await res.json();
+        if (res["_id"]) {
+          localStorage.setItem("Favourites",res['fav']);
+          window.location = "/";
+        } else {
+          document.querySelector(".loading").style.display = "none";
+          let errors = document.querySelectorAll(".error");
+          errors.forEach((e) => {
+            e.textContent = res["error"];
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

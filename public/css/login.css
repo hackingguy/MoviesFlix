@@ -44,6 +44,7 @@ body {
   width:400px;
   border-radius:5px;
   overflow:hidden;
+  position: relative;
 }
 
 .sign {
@@ -87,6 +88,14 @@ input {
   border:none;
   color:white;
   cursor:pointer;
+}
+
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(108,108,108,0.8);
+  display: none;
 }
 
 .register-forgot {

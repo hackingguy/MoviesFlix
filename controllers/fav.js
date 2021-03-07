@@ -7,17 +7,13 @@ var addFav = async(req,res)=>{
     let movieID = body["id"];
     let isValid = Movie.isExists(movieID);
     if(!isValid) return res.status(400).send({"res":"Invalid Movie ID"});
-    let usrID = req.userID;
-    let usr = await User.findOne({_id:usrID});
-    usr.fav.push(movieID);
-    await usr.save();
+    User.addFav(req.userID,movieID);
     res.send({"res":"Added Successfully"});
 }
 
 var getFav = async(req,res)=>{
-    let uid = req.userID;
-    let usr = await User.findOne({_id:uid});
-    let movies = await Movie.model.find({ _id: { $in: usr['fav'] }});
+    let favID = await User.getFavs(req.userID);
+    let movies = await Movie.getList(favID);
     res.render('home',({
         top10:false,
         movies:movies,

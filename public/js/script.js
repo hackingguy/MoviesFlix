@@ -19,27 +19,12 @@ function pagination() {
   mvbtns[0].addEventListener('click',(e)=>{
     e.preventDefault();
     if(pg>1)
-      window.location= "/home/?page="+(pg-1);
+      window.location= "/home/?page="+(parseInt(pg)-1);
   });
   mvbtns[1].addEventListener('click',(e)=>{
     e.preventDefault();
-    window.location = "/home/?page="+(pg+1);
+    window.location = "/home/?page="+(parseInt(pg)+1);
   }) ;
-}
-
-function favs() {
-  document.querySelectorAll(".fav-icon").forEach(e=>{
-    e.addEventListener('click',(s)=>{
-      let id = e.parentElement.parentElement.nextElementSibling["href"].split("id=")[1];
-      fetch('/add-fav',{
-        method:"POST",
-        headers:{
-          "Content-type":"application/json"
-        },
-        body:JSON.stringify({"id":id})
-      });
-    })
-  })
 }
 
 function setVars(){
@@ -49,10 +34,10 @@ function setVars(){
 
 let start = () => {
   let host = window.location.href;
-  if (host.includes("search"))
-    document.querySelector(".hero").style.display = "none";
-  pagination();
+  if(!host.includes("favourites"))
+    pagination();
   favs();
+  setFavs();
 };
 
 start();

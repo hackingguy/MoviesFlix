@@ -8,18 +8,25 @@
 
 html,
 body {
+    position: relative;
     height: 100%;
 }
 
-body {
-    background: url("/imgs/banners/banner-2.jpg");
-    width: 100%;
+.wallpaper{
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    width:100%;
+    z-index: -1;
 }
 
 
 .logo {
     width: 220px;
     position: absolute;
+    top:0;
+    left:0;
 }
 
 .logo img {
@@ -82,6 +89,13 @@ body {
 .join-now:hover {
     background-color: white;
     color:red;
+}
+
+.sign-in {
+    position: absolute;
+    width:100px;
+    top:0;
+    right: 10px;
 }
 
 @media only screen and (max-width:700px){

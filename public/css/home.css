@@ -50,6 +50,10 @@ body {
   z-index: -20
 }
 
+.fav-active {
+  color: red;
+}
+
 .wrapper {
   display: grid;
   grid-template-areas: 'hdr''mv-cntr''ftr';
@@ -85,6 +89,7 @@ header {
 .hero-section {
   position: absolute;
   height: 100%;
+  padding: 0 5px;
   display: flex;
   align-items: center;
   overflow: auto;

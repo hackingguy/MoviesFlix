@@ -39,6 +39,11 @@ class Movies {
     return { playing: movie, sideLinks: sideLinks, id:id };
   }
 
+  async getList(arr){
+    let movies = await this.model.find({ _id: { $in: arr }});
+    return movies;
+  }
+
   async search(q) {
     let found = await this.model
       .find({ title: { $regex: q, $options: "i" } })
