@@ -92,7 +92,7 @@
   line-height: 25px
 }
 
-@media only screen and (max-width:460px) {
+@media only screen and (max-width:786px) {
   .poster:hover {
     transform: unset;
   }
