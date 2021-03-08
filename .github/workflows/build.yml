@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm start & npx wait-on http://localhost:3000
+        env:
+          CORS_URL: ${{secrets.CORS_URL}}
+          DB_CONNECTION_STRING: ${{secrets.DB_CONNECTION_STRING}}
+          JWT_SECRET_TOKEN: ${{secrets.JWT_SECRET_TOKEN}}
