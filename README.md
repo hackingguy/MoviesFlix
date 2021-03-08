@@ -53,14 +53,13 @@
 
 [![ScreenShot](https://i.imgur.com/ikvxSbo.png)](https://whimsical.com/netflix-clone-F57zVrKv1T1SvdWU8RnGTS)
 
-
+![Github-Actions](https://github.com/hackingguy/MoviesFlix/actions/workflows/build.yml/badge.svg)
 ### Built With
 
 * [Node JS]()
 * [MongoDB]()
 * [ExpressJS]()
 * [HTML5,CSS3,JS]()
-
 
 
 <!-- GETTING STARTED -->
