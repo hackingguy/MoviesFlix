@@ -264,14 +264,20 @@ header {
 
   .hero-poster {
     height: 200px;
-    width: 100vw;
-    margin: 0px;
+    width:unset;
+    max-width: 300px;
+    margin:0;
+    margin: 5px;
   }
 
   .hero-poster:hover {
     transform: unset;
   }
 
+  .hero-poster img {
+    height:100%;
+    width: unset;
+  }
 
   #footer-section {
     margin-top: 15px;

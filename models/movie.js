@@ -27,7 +27,7 @@ class Movies {
       .sort({ _id: -1 })
       .skip((pageNum - 1) * size)
       .limit(size)
-      .select({ poster: 1, title: 1, description:1 });
+      .select({ poster: 1, title: 1});
     return movies;
   }
 
