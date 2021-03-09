@@ -34,7 +34,7 @@ function setVars(){
 
 let start = () => {
   let host = window.location.href;
-  if(!host.includes("favourites"))
+  if(!host.includes("favourites") && !host.includes("search"))
     pagination();
   favs();
   setFavs();

@@ -24,7 +24,7 @@ function favs() {
   document.querySelectorAll(".fav-icon").forEach((e) => {
     e.addEventListener("click", (s) => {
       e.classList.toggle("fav-active");
-      let id = e.parentElement.parentElement.nextElementSibling["href"].split(
+      let id = e.previousElementSibling.querySelector("a")["href"].split(
         "id="
       )[1];
       changeFav(id);
