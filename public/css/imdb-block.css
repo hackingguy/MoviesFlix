@@ -1,0 +1,33 @@
+#imdb-block {
+    border: 1px solid white;
+	background:black;
+	color:white;
+	padding:20px;
+	border-radius:5px;
+    flex-direction: row;
+	margin: 2rem auto;
+    width:100%;
+    display: flex;
+}
+#imdb-block a img {
+    border-radius: 2px;
+	width: 100%;
+}
+.star {
+	letter-spacing: .5rem;
+	color: #ff0;
+}  
+.nonrate {
+	color: #444;
+}
+#content {
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+ #imdb-block {
+     text-align: center;
+     align-items: center;
+     flex-direction: column;
+ }
+}

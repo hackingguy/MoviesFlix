@@ -68,6 +68,20 @@
   color: gold
 }
 
+.fav-play {
+    position: absolute;
+    left: 6px;
+    top:4px;
+    font-size: 1.75rem;
+    border-radius: 4px;
+    padding: 4px 8px;
+    transition: 0.5s all;
+}
+
+.fav-play:hover {
+  background-color: rgba(255,0,0,0.8);
+}
+
 .fav-icon {
   position: absolute;
   right: 10px;

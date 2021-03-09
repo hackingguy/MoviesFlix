@@ -12,34 +12,19 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
   </head>
   <body>
+    <% var movieName = sanitizer(title) %>
     <div class="bg-image"></div>
     <div class="wrapper">
       <%- include("partials/nav-bar.ejs") %>
       <main class="container">
         <!-- Do Not Edit Below Block By Javascript, Let it Handle By Plyr else it will break -->
         <section id="movie-container">
-          <div id="main-title"><%= sanitizer(title) %></div>
+          <div id="main-title" data-test="<% movieName %>"><%= sanitizer(title) %></div>
           <div class="video-container hover-effect">
             <video preload="metadata" id="player" playsinline crossorigin controls data-poster="">
               <source src="<%= sourceLink %>" />
             </video>
           </div>
-          <% if(Object.keys(episodes).length>1) { %>
-          <section id="episode-header">
-            <span>Episodes</span>
-            <div class="fa fa-plus" id="plus"></div>
-          </section>
-          <section id="ep-list">
-
-           <% Object.values(episodes).forEach((link,i) => { %>
-            
-            <a href="<%= link %>" class="episode-button">
-              <span class="ep">Ep </span><span class="ep-num"><%= i+1 %></span>
-            </a>
-            <% }) %> 
-          </section>
-
-          <% } %>
           <section id="describe">
             <span>Description</span>
             <div class="fa fa-angle-down" id="arrow"></div>
@@ -55,6 +40,7 @@
               <img src="/imgs/icons/mxplayer.png" alt="">
             </a>
           </div>
+          <%- include("partials/imdb-block.ejs") %>
         </section>
         <section id="side-bar">
           <div id="side-title">

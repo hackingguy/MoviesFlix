@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/css/card.css">
 <div class="movie-container animate-bottom hide">
     <div class="poster">
       <img
@@ -8,6 +7,11 @@
         class="poster-img"
       />
       <div class="poster-overlay">
+        <div class="fav-play">
+          <a href='/movie/?id=<%= movie["_id"] %>'>
+          <i class="fa fa-play"></i>
+        </a>
+        </div>
         <div class="fav-icon">
           <i class="fa fa-heart"></i>
         </div>
