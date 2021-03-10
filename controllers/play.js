@@ -18,7 +18,8 @@ exports.playController= async(req,res)=>{
         if(link.includes("vidnext.net/ajax.php")){
             throw new Error("err");
         }
-        await axios.head(link);
+        let a = await axios.head(link);
+        console.log(a);
         link = process.env.CORS_URL + play["source"]["0"]
     }
     catch(err){
@@ -27,7 +28,8 @@ exports.playController= async(req,res)=>{
             if(link.includes("vidnext.net/ajax.php")){
                 throw new Error("err");
             }
-            await axios.head(play["source_bk"]["0"])
+            let a = await axios.head(play["source_bk"]["0"]);
+            console.log(a);
             link = process.env.CORS_URL + play["source_bk"]["0"]
         }
         //Else Scrap URL From API

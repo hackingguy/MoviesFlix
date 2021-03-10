@@ -1,0 +1,1 @@
+const randStr = require('../utils/randomStr');
