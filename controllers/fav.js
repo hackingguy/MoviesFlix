@@ -7,8 +7,8 @@ var addFav = async(req,res)=>{
     let movieID = body["id"];
     let isValid = Movie.isExists(movieID);
     if(!isValid) return res.status(400).send({"res":"Invalid Movie ID"});
-    User.addFav(req.userID,movieID);
-    res.send({"res":"Added Successfully"});
+    let favList = await User.addFav(req.userID,movieID);
+    res.send({"favList":favList});
 }
 
 var getFav = async(req,res)=>{

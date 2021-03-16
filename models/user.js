@@ -37,7 +37,9 @@ class User {
         else{
             usr.fav.push(movieID);
         }
+        let favList = usr["fav"]
         await usr.save();
+        return favList;
     }
 }
 
