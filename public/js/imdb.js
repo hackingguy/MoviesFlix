@@ -31,7 +31,6 @@ async function searchIMDB(name) {
 		"Content-type":"application/json"
 	});
 	res = await res.json();
-	console.log(res)
 	if(res["Response"]==="False")
 		document.querySelector("#imdb-block").remove();
 	else{
