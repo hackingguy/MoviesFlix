@@ -1,10 +1,16 @@
+@font-face {
+    font-family: 'Calibre';
+    src:url('/fonts/Calibre-Regular.woff2') format('woff2');
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat';
+    font-family: 'Calibre','Montserrat';
     box-sizing: border-box;
     user-select: none;
 }
+
 
 html,
 body {

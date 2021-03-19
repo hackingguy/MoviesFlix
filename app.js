@@ -6,6 +6,7 @@ const compression = require('compression');
 const app = express();
 
 const connectDB = require("./config/db");
+const schedule = require('./utils/schedule');
 const indexRoute = require('./routes/index');
 const homeRoute = require("./routes/home");
 const playRoute = require("./routes/play");
@@ -18,6 +19,9 @@ const editProfileRoute = require('./routes/editProfile');
 const resetRoute = require('./routes/reset');
 //Connecting To Database
 connectDB();
+
+//Running Scheduler
+schedule();
 
 //View engine setup
 app.set("views", path.join(__dirname, "views"));

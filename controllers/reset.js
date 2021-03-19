@@ -9,26 +9,25 @@ module.exports.get = async(req,res)=>{
 
 module.exports.post = async(req,res)=>{
     let email = req.body["email"];
-    let usr = await User.model.findOne({email:email});
-    if(!usr) return res.send({"error":"User not registered"});
+    let user = await User.model.findOne({email:email});
+    if(!user) return res.send({"error":"User not registered"});
 
     let resetToken=crypto.randomBytes(20).toString('hex');
-    console.log(resetToken);
     let expiry = Date.now() + 24*60*60*1000;
-    usr["passwordResetToken"] = resetToken;
-    usr["resetTokenExpiry"] = expiry;
-    await usr.save();
+    user["passwordResetToken"] = resetToken;
+    user["resetTokenExpiry"] = expiry;
 
     const msg = {
         to: email,
         from: "care@maplehacks.ml",
         subject: `[Moviesflix] Reset Your Password`,
-        text: `Hi ${usr.name}`,
+        text: `Hi ${user.name}`,
         html: `We have received a request to reset your password. Follow this <a href="${process.env.HOST}/reset/token/${resetToken}">link</a>.Please note that this link is only valid for 24 hrs.<br>If you have not requested this, please ignore this mail.<br><br>Regards,<br>MoviesFlix`,
     }
     
     let sent = await sendMail(msg);
     if(!sent) return res.send({"error":"Error while sending mail"});
+    await user.save();
     res.send({"message":"Mail Sent"});
 }
 
