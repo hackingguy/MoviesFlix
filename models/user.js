@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const schema = mongoose.Schema;
 
 const userSchema = new schema({
@@ -13,7 +14,13 @@ const userSchema = new schema({
     },
     fav: [{
         type:String
-    }]
+    }],
+    passwordResetToken:{
+        type:String
+    },
+    resetTokenExpiry:{
+        type:Date
+    }
 })
 
 class User {
@@ -40,6 +47,13 @@ class User {
         let favList = usr["fav"]
         await usr.save();
         return favList;
+    }
+
+
+    async generateHash(pass){
+        let salt = await bcrypt.genSalt(10);
+        pass = await bcrypt.hash(pass, salt);
+        return pass;
     }
 }
 

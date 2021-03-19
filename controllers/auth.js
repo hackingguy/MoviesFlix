@@ -7,45 +7,23 @@ const _ = require("lodash");
 
 function customErrors(name,limit){
   return {
-    'string.base': `${name} is Invalid`,
-    'string.empty': `${name} cannot be an Empty`,
-    'string.min': `${name} must have ${limit} characters`,
-    'string.invalid:': `${name} is Invalid`,
-    'any.required': `${name} is a required field`
+    'any.base': `${name} is invalid`,
+    'any.empty': `${name} cannot be empty`,
+    'any.min': `${name} must have ${limit} characters`,
+    'any.invalid:': `${name} is invalid`,
+    'any.required': `${name} is required`
   }
 }
 
 const validateLogin = Joi.object({
-  email:Joi.string()
-        .email()
-        .min(5)
-        .max(40)
-        .required()
-        .messages(customErrors("Email",5)),
-  password:Joi.string()
-        .min(6)
-        .max(50)
-        .required()
-        .messages(customErrors("Password",8))
+  email:Joi.string().email().min(5).max(40).required().messages(customErrors("Email",5)),
+  password:Joi.string().min(6).max(50).required().messages(customErrors("Password",8))
 });
 
 const validateRegister = Joi.object({
-  name:Joi.string()
-      .min(3)
-      .max(30)
-      .required()
-      .messages(customErrors("Name",3)),
-  email:Joi.string()
-        .email()
-        .min(5)
-        .max(40)
-        .required().error(new Error("Email is invalid"))
-        .messages(customErrors("Email",5)),
-  password:Joi.string()
-        .min(6)
-        .max(50)
-        .required()
-        .messages(customErrors("Password",8))
+  name:Joi.string().min(3).max(30).required().messages(customErrors("Name",3)),
+  email:Joi.string().email().min(5).max(40).required().messages(customErrors("Email",5)),
+  password:Joi.string().min(6).max(50).required().messages(customErrors("Password",8))
 });
 
 function generateToken(id,exp) {
@@ -55,19 +33,16 @@ function generateToken(id,exp) {
 }
 
 module.exports.loginGet = async (req, res) => {
-  if (req.userID) {
-    res.redirect("/home");
-  } else {
-    res.render("login");
-  }
+  if (req.userID) 
+    return res.redirect("/home");
+  res.render("login");
 };
 
 module.exports.registerGet = async (req, res) => {
-  if (req.userID) {
-    res.redirect("/home");
-  } else {
-    res.render("register");
-  }
+  if (req.userID)
+    return res.redirect("/home");
+  
+  res.render("register");
 };
 
 module.exports.loginPost = async (req, res) => {
@@ -76,18 +51,19 @@ module.exports.loginPost = async (req, res) => {
   let value = validateLogin.validate(req.body);
   if(value.error)
     return res.send({error:value.error.details[0].message});
-  let curr = await User.model.findOne({ email: email });
-  if (!curr)
+  let user = await User.model.findOne({ email: email });
+  if (!user)
     return res.status(400).send({ error: "Invalid Email Or Password" });
-  let isValid = await bcrypt.compare(password, curr.password);
+  let isValid = await bcrypt.compare(password, user.password);
   if (isValid) {
-    let token = generateToken(curr._id,'24h');
+    let token = generateToken(user._id,'24h');
     res.cookie("token",token,{
       expires:new Date(Date.now()+1000*60*60*24),
       httpOnly:true
     });
-    res.send({ _id: curr._id, name: curr.name, Token: token, fav: curr.fav });
-  } else res.status(400).send({ error: "Invalid Email Or Password" });
+    return res.send({ _id: user._id, name: user.name, fav: user.fav });
+  }
+  res.status(400).send({ error: "Invalid Email Or Password" });
 };
 
 module.exports.registerPost = async (req, res) => {
@@ -96,13 +72,11 @@ module.exports.registerPost = async (req, res) => {
   let value = validateRegister.validate(usr);
   if(value.error)
       return res.send({error:value.error.details[0].message});
-  let a = await User.model.findOne({ email: usr.email }).exec();
-  if (a) return res.status(400).send({ error: "User Already Registered" });
-  let salt = await bcrypt.genSalt(10);
-  usr.password = await bcrypt.hash(usr.password, salt);
+  let a = await User.model.findOne({ email: usr.email });
+  if (a) return res.status(400).send({ "error": "User Already Registered" });
+  usr.password = await User.generateHash(usr.password);
   let user = new User.model(usr);
   let r = await user.save();
-  res.setHeader("Authorization", "Bearer " + generateToken(usr._id));
   res.send({ _id: r._id });
 };
 
@@ -113,9 +87,7 @@ module.exports.logout = async(req,res) => {
       expires:new Date(Date.now()+1),
       httpOnly:true
     })
-    res.redirect('/login');
+    return res.redirect('/login');
   }
-  else{
-    res.redirect('/login');
-  }
+  res.redirect('/login');
 }

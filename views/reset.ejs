@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Moviesflix</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <a class="logo" href="/">
+      <img src="/imgs/logo.png" alt="" />
+    </a>
+    <div class="wrapper">
+      <div class="loading"></div>
+      <div class="sign-in">
+        <h1 class="sign">Reset Password</h1>
+        <form action="/forgot-password" method="POST" class="">
+          <input type="text" autocomplete="off" name="email" required placeholder="Email" class="email"/>
+          <div class="error"></div>
+          <input type="submit" class="submit" value="Send Reset Mail" />
+        </form>
+        <div class="register-forgot">
+          <a href="/login">← Back to login</a>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
+    <script>
+      document.querySelector(".submit").addEventListener("click", async (e) => {
+        e.preventDefault();
+        document.querySelector(".loading").style.display = "block";
+        let errors = document.querySelectorAll(".error");
+        errors.forEach((e) => {
+          e.textContent = "";
+        });
+        let email = document.querySelector(".email").value;
+        let res = await fetch("/reset", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+          }),
+        });
+        res = await res.json();
+        document.querySelector(".loading").style.display = "none";
+        if(res["error"]){
+            errors.forEach(e=>{
+              e.textContent = res["error"];
+            })
+            return;
+        }
+        else{
+          errors.forEach(e=>{
+                e.textContent = res["message"];
+              })
+        }
+      });
+    </script>
+  </body>
+</html>

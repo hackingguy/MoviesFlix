@@ -15,7 +15,7 @@ const authRoute = require('./routes/auth');
 const favRoute = require('./routes/fav');
 const maintainanceRoute = require('./routes/maintainance');
 const editProfileRoute = require('./routes/editProfile');
-
+const resetRoute = require('./routes/reset');
 //Connecting To Database
 connectDB();
 
@@ -41,6 +41,7 @@ app.use("/movie", playRoute);
 app.use("/search",searchRoute);
 app.use("/edit-profile",editProfileRoute)
 app.use("/maintainance",maintainanceRoute);
+app.use('/reset',resetRoute);
 app.use(favRoute);
 app.use(authRoute);
 

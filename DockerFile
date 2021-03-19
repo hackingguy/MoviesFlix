@@ -1,13 +1,12 @@
 FROM node:14
 
-#Create Work Directory
 WORKDIR /app
 
-
-#Copy package.json And package-lock.json
 COPY package*.json ./
 
 RUN npm install
+
+COPY . . 
 
 ENV PORT=3000
 
