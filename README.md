@@ -37,7 +37,7 @@
   <p align="center">
     A Movies website made using nodeJS, mongoDB and expressJS
     <br />
-    <a href="https://moviesflix.maplehacks.ml/">View Website</a>
+    <a href="https://moviesflixx.cf/">View Website</a>
     ·
     <a href="https://github.com/hackingguy/MoviesFlix/issues">Report Bug</a>
     ·
@@ -54,6 +54,9 @@
 [![ScreenShot](https://i.imgur.com/ikvxSbo.png)](https://whimsical.com/netflix-clone-F57zVrKv1T1SvdWU8RnGTS)
 
 ![Github-Actions](https://github.com/hackingguy/MoviesFlix/actions/workflows/build.yml/badge.svg)
+[![UpTimeRobot](https://img.shields.io/uptimerobot/ratio/7/m787581594-f7ddf3609b475948912e312a)](https://stats.uptimerobot.com/lE9mpSo4Nw)
+[![License](https://img.shields.io/github/license/hackingguy/MoviesFlix)](https://github.com/hackingguy/MoviesFlix/blob/master/LICENSE)
+
 ### Built With
 
 * [Node JS]()
