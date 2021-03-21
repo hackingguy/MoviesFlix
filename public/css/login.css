@@ -21,6 +21,8 @@ body {
 .logo {
   width:220px;
   position:absolute;
+  top:0;
+  left:0;
 }
 
 .logo img {

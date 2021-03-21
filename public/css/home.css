@@ -245,6 +245,10 @@ header {
 
 @media only screen and (max-width:786px) {
 
+  .hero-poster:hover{
+    transform: unset;
+  }
+
   .poster-img {
     max-height: 10000px;
   }

@@ -10,6 +10,7 @@ module.exports.get = async(req,res)=>{
 module.exports.post = async(req,res)=>{
     let email = req.body["email"];
     let user = await User.model.findOne({email:email});
+    let host = process.env.HOST;
     if(!user) return res.send({"error":"User not registered"});
 
     let resetToken=crypto.randomBytes(20).toString('hex');
@@ -19,7 +20,7 @@ module.exports.post = async(req,res)=>{
 
     const msg = {
         to: email,
-        from: "care@maplehacks.ml",
+        from: `care@${host.split("//")[1]}`,
         subject: `[Moviesflix] Reset Your Password`,
         text: `Hi ${user.name}`,
         html: `We have received a request to reset your password. Follow this <a href="${process.env.HOST}/reset/token/${resetToken}">link</a>.Please note that this link is only valid for 24 hrs.<br>If you have not requested this, please ignore this mail.<br><br>Regards,<br>MoviesFlix`,

@@ -101,6 +101,10 @@
 }
 
 @media only screen and (max-width:786px) {
+  .poster {
+    width:200px;
+    height:275px;
+  }
   .poster:hover {
     transform: unset;
   }
